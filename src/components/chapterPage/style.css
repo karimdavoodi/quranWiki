@@ -43,3 +43,38 @@
     text-align: justify;
     color: greenyellow;
 }
+
+.Comments {
+    font-size: small;
+    color: gray;
+    text-align: left;
+    padding-left: 5%;
+    padding-top: 3%;
+    font-family: serif;
+}
+.Comments-header {
+    opacity: 0.5;
+    color: goldenrod;
+}
+.Comment {
+    border: 0.1px dotted greenyellow;
+}
+
+.Comment-user {
+display: flex;
+font-size: 60%;
+}
+.Comment-user-avatar {
+
+}
+.Comment-user-name {
+
+}
+.Comment-text {
+    width: 97%;
+    font-size: 90%;
+}
+
+.Comment-avatar {
+
+}

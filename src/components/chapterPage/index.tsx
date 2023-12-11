@@ -21,7 +21,7 @@ const ChapterPage = () => {
             {chapter?.verses.map((aya, index) => (
                 <div className="AyaArea" key={index}>
                     <ArabicText text={aya.text} id={aya.id} />
-                    <AyaMenu chapterId={aya.id} ayaId={aya.id} />
+                    <AyaMenu chapterId={chapter.id} ayaId={aya.id} />
                     <hr className="AyaArea-hr" />
                 </div>
             ))}
