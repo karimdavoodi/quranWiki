@@ -1,5 +1,5 @@
 import React from "react";
-import "../../App.css";
+import "./style.css";
 
 export const ArabicText = (probs: { text: string; id: number }) => {
     return (

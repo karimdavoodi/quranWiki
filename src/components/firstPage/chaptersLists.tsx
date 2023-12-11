@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { quran } from "../../data/quran";
-import "../../App.css";
+import "./style.css";
 
 export const ChaptersList = () => {
     return (

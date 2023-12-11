@@ -1,49 +1,30 @@
 import React from "react";
-import "../../App.css";
+import { Link } from "react-router-dom";
+
+import { ReactComponent as SavedIcon } from "../../icons/bookmark-add-icon.svg";
+import { ReactComponent as DarkIcon } from "../../icons/moon-line-icon.svg";
+import { ReactComponent as InfoIcon } from "../../icons/info-circle-line-icon.svg";
+
+import "./style.css";
 
 export const Menu = () => {
     return (
-        <div className="App-menu">
-            <button
-                className="App-menu-button"
-                onClick={() =>
-                    console.log(
-                        "Are you sure you want to delete this bookmark?"
-                    )
-                }
-            >
-                B
-            </button>
-            <button
-                className="App-menu-button"
-                onClick={() =>
-                    console.log(
-                        "Are you sure you want to delete this bookmark?"
-                    )
-                }
-            >
-                L
-            </button>
-            <button
-                className="App-menu-button"
-                onClick={() =>
-                    console.log(
-                        "Are you sure you want to delete this bookmark?"
-                    )
-                }
-            >
-                N
-            </button>
-            <button
-                className="App-menu-button"
-                onClick={() =>
-                    console.log(
-                        "Are you sure you want to delete this bookmark?"
-                    )
-                }
-            >
-                A
-            </button>
+        <div>
+            <div className="Menu">
+                <div className="Menu-icon">
+                    <DarkIcon />
+                </div>
+                <div className="Menu-icon">
+                    <SavedIcon />
+                </div>
+                <div className="Menu-icon">
+                    <Link to="/info">
+                        <InfoIcon />
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 };
+
+export default Menu;

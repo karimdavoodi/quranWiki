@@ -1,0 +1,45 @@
+
+@import url("../../App.css");
+
+.ChapterPage {
+    padding: 12px;
+}
+
+.AyaArea {
+    padding: 3px;
+}
+.AyaArea-besm{
+  font-family: "uthmanV2";
+  font-size: larger;
+  padding-bottom: 20px;
+}
+.AyaArea-hr {
+    opacity: 0.4;
+}
+.AyaArea-aya-menu {
+  display: flex;
+  padding-top: 6px;
+
+}
+.AyaArea-icon {
+    width: 12px;
+    height: 12px;
+    padding-left: 8px;
+    cursor: pointer;
+}
+
+.AyaArea-ar {
+    direction: rtl;
+    display: flex;
+}
+.AyaArea-ar-id {
+    color:green;
+    padding-left: 6px;
+    font-family: "uthmanV2";
+    font-size: small;
+}
+.AyaArea-ar-text {
+    font-family: "uthmanV2";
+    text-align: justify;
+    color: greenyellow;
+}

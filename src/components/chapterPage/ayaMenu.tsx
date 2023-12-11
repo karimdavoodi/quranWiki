@@ -6,7 +6,7 @@ import { ReactComponent as ShareIcon } from "../../icons/share-line-icon.svg";
 import { ReactComponent as SavedIcon } from "../../icons/bookmark-add-icon.svg";
 import { ReactComponent as PlayIcon } from "../../icons/play-button-icon.svg";
 
-import "../../App.css";
+import "./style.css";
 
 export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
     return (

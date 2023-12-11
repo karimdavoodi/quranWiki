@@ -5,7 +5,7 @@ import { quran } from "../../data/quran";
 import { ArabicText } from "./arabicText";
 import { AyaMenu } from "./ayaMenu";
 
-import "../../App.css";
+import "./style.css";
 
 const ChapterPage = () => {
     const { id } = useParams();
