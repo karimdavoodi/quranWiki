@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: yellow;
+  --background: #556b2f;
+  --background-hover: #72a618;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #556b2f;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  text-align: center;
+  /* border: 1px solid black; */
+  margin: auto;
+}
+
+@font-face {
+  font-family: "uthmanV2";
+  src: local("uthmanV2"), url("../fonts/uthmanTN_v2-0.ttf") format(".ttf");
+}
