@@ -1,13 +1,13 @@
 import React from "react";
 import Link from "next/link";
 
-import { quran } from "../../data/quran";
+import { quranArabic } from "@/public/data/quran_ar";
 
 export const ChaptersList = () => {
     return (
         <div>
             <hr />
-            {quran.map((chapter, index) => (
+            {quranArabic.map((chapter, index) => (
                 <div key={index} className="w-2/3 inline-block">
                     <Link
                         href={{
@@ -15,12 +15,12 @@ export const ChaptersList = () => {
                             query: { id: chapter.id },
                         }}
                     >
-                        <div className="p-1 flex hover:bg-[#5d8a0e]">
+                        <div className="p-1 flex hover:bg-[#4f5d39]">
                             <div className=" text-red-500 pr-1">
                                 {chapter.id}
                             </div>
                             <div className="text-yellow-300 font-serif">
-                                {chapter.transliteration}
+                                {chapter.nameEn}
                             </div>
                             <div className="text-yellow-500 ml-auto font-['uthmanV2']">
                                 {chapter.name}

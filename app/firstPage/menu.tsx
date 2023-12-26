@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
 
-import SavedIcon from "../../icons/bookmark-add-icon.svg";
-import InfoIcon from "../../icons/info-circle-line-icon.svg";
+import BookIcon from "./icons/book.svg";
+import SaveIcon from "./icons/bookmark.svg";
+import InfoIcon from "./icons/help.svg";
+import { featureBookmark } from "../constants";
 
 export const Menu = () => {
     const iconStyle =
@@ -11,20 +13,22 @@ export const Menu = () => {
         <div>
             <div className="w-40 inline-block">
                 <div className={iconStyle}>
-                    <Link href="/firstPage/login">
+                    <Link href="/firstPage/infoPage">
                         <InfoIcon />
                     </Link>
                 </div>
                 <div className={iconStyle}>
-                    <Link href="/firstPage/bookmarkPage">
-                        <SavedIcon />
+                    <Link href="/firstPage/hadicFirstPage">
+                        <BookIcon />
                     </Link>
                 </div>
-                <div className={iconStyle}>
-                    <Link href="/firstPage/bookmarkPage">
-                        <SavedIcon />
-                    </Link>
-                </div>
+                {featureBookmark && (
+                    <div className={iconStyle}>
+                        <Link href="/firstPage/bookmarkPage">
+                            <SaveIcon />
+                        </Link>
+                    </div>
+                )}
             </div>
         </div>
     );

@@ -2,17 +2,16 @@
 import React from "react";
 import { useSearchParams } from "next/navigation";
 
-import { quran } from "../../../data/quran";
+import { quranArabic } from "@/public/data/quran_ar";
 import { ArabicText } from "./arabicText";
 import { AyaMenu } from "./ayaMenu";
+import Translate from "./ayaTranslate";
 
 const ChapterPage = () => {
     const searchParams = useSearchParams();
     const id = searchParams.get("id");
 
-    console.log(`id is ${id}`);
-
-    const chapter = quran.find((chapter) => chapter.id.toString() === id);
+    const chapter = quranArabic.find((chapter) => chapter.id.toString() === id);
 
     return (
         <div className="p-1">
@@ -24,6 +23,7 @@ const ChapterPage = () => {
             {chapter?.verses.map((aya, index) => (
                 <div className="p-1" key={index}>
                     <ArabicText text={aya.text} id={aya.id} />
+                    <Translate chapterId={chapter?.id} ayaId={aya.id} />
                     <AyaMenu chapterId={chapter.id} ayaId={aya.id} />
                     <hr className="opacity-10" />
                 </div>

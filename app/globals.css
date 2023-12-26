@@ -3,22 +3,24 @@
 @tailwind utilities;
 
 :root {
-  --foreground: yellow;
-  --background: #556b2f;
-  --background-hover: #72a618;
+  --foreground: rgb(202, 202, 201);
+  --background: #373837;
+  --background-hover: #363d2a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #556b2f;
+    --background: #525e53;
   }
+}
+html {
+  font-size: 24px; 
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   text-align: center;
-  /* border: 1px solid black; */
   margin: auto;
 }
 

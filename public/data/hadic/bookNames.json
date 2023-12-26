@@ -1,0 +1,47 @@
+[
+    {
+        "title": "Sahih al-Bukhari",
+        "folder": "bukhari",
+        "chapterNumber": 97
+    },
+    {
+        "title": "Sahih Muslim",
+        "folder": "muslim",
+        "chapterNumber": 57
+    },
+    {
+        "title": "Sunan Abi Dawud",
+        "folder": "abudawud",
+        "chapterNumber": 43
+    },
+    {
+        "title": "Jami al-Tirmidhi",
+        "folder": "tirmidhi",
+        "chapterNumber": 49
+    },
+    {
+        "title": "Ahmad ibn Hanbal",
+        "folder": "ahmed",
+        "chapterNumber": 8
+    },
+    {
+        "title": "Sunan al-Darimi",
+        "folder": "darimi",
+        "chapterNumber": 24
+    },
+    {
+        "title": "Sunan Ibn Majah",
+        "folder": "ibnmajah",
+        "chapterNumber": 38
+    },
+    {
+        "title": "Muwatta Malik",
+        "folder": "malik",
+        "chapterNumber": 61
+    },
+    {
+        "title": "Sunan al-Nasai",
+        "folder": "nasai",
+        "chapterNumber": 52
+    }
+]
