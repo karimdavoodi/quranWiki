@@ -23,7 +23,7 @@ const BookPage = () => {
             {chapters.map((id, index) => (
                 <div
                     key={index}
-                    className="w-1/2 inline-block hover:bg-[#4f5d39]"
+                    className="w-32 inline-block hover:bg-[#4f5d39]"
                 >
                     <Link
                         href={{
@@ -36,7 +36,7 @@ const BookPage = () => {
                         }}
                     >
                         <div
-                            className="pl-5 text-center text-yellow-400"
+                            className="pl-2 text-yellow-300 text-xs3 font-serif"
                             key={index}
                         >
                             Chapter {id}

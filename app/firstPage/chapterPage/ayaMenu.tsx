@@ -18,7 +18,7 @@ import {
     featureAyaDate,
     featureBookmark,
     featureTranslate,
-} from "@/app/constants";
+} from "@/app/constant";
 
 export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
     const [subMenu, setSubmenu] = useState<AyaSubmenuType>("");

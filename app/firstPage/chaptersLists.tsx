@@ -8,7 +8,7 @@ export const ChaptersList = () => {
         <div>
             <hr />
             {quranArabic.map((chapter, index) => (
-                <div key={index} className="w-2/3 inline-block">
+                <div key={index} className="w-56 inline-block">
                     <Link
                         href={{
                             pathname: "/firstPage/chapterPage",
@@ -16,10 +16,10 @@ export const ChaptersList = () => {
                         }}
                     >
                         <div className="p-1 flex hover:bg-[#4f5d39]">
-                            <div className=" text-yellow-700 pr-4">
+                            <div className=" text-yellow-700 pr-2">
                                 {chapter.id}
                             </div>
-                            <div className="text-yellow-300 font-serif">
+                            <div className="text-yellow-300 font-serif text-xs3">
                                 {chapter.nameEn}
                             </div>
                             <div className="text-yellow-500 ml-auto font-['uthmanV2']">

@@ -7,9 +7,10 @@ const FirstPage = () => {
     return (
         <div>
             <Title />
-            <div className="pl-14 pr-14 text-xs2">
+            <div className="pl-8 pr-8 text-xs2 text-left">
                 Please help us to understand each verse by connecting it to
-                other verses, Hadic, or Bible verses.
+                other Quran verses, Hadic, or Bible verses by icons below each
+                verse.
             </div>
             <Menu />
             <ChaptersList />

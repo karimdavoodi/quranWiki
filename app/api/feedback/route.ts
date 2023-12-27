@@ -1,6 +1,6 @@
 import { IFeedback, Feedback } from "../../models";
 import { connect } from "mongoose";
-import { FEEDBACK_INTERVAL, dbUrl } from "@/app/constants";
+import { FEEDBACK_INTERVAL, dbUrl } from "@/app/constant";
 import { hashString } from "@/app/util";
 async function setFeedback(data: IFeedback) {
     try {

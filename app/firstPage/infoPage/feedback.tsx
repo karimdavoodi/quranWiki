@@ -10,7 +10,7 @@ const Feedback = () => {
 
     const inputStyle = "bg-transparent  border border-gray-500 rounded p-1";
     const rowStyle = "flex pt-1";
-    const textStyle = "w-40";
+    const textStyle = "w-16";
 
     const sendFeadback = () => {
         if (type === "" || message === "") {
@@ -42,7 +42,7 @@ const Feedback = () => {
     };
 
     return (
-        <div className="pl-5 text-yellow-500">
+        <div className=" text-yellow-500">
             <div className={rowStyle}>
                 <div className={textStyle}>Name:</div>
                 <input
@@ -87,7 +87,7 @@ const Feedback = () => {
                 ></textarea>
             </div>
             <div className={rowStyle}>
-                <div className="flex-col">
+                <div className="flex-col m-auto">
                     <button
                         className="bg-green-900 text-white px-2 py-2 rounded"
                         onClick={() => sendFeadback()}

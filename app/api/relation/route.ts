@@ -4,7 +4,7 @@ import {
     RELATION_ADD_INTERVAL,
     RELATION_LIKE_INTERVAL,
     dbUrl,
-} from "@/app/constants";
+} from "@/app/constant";
 import { hashString } from "@/app/util";
 async function setRelation(data: IRelation) {
     try {

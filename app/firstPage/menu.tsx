@@ -3,33 +3,31 @@ import Link from "next/link";
 
 import BookIcon from "./icons/book.svg";
 import SaveIcon from "./icons/bookmark.svg";
-import InfoIcon from "./icons/help.svg";
-import { featureBookmark } from "../constants";
+import InfoIcon from "./icons/info.svg";
+import { featureBookmark } from "../constant";
 
 export const Menu = () => {
-    const iconStyle =
-        "cursor-pointer inline-flex p-1 hover:border border-green-600 rounded";
+    const iconStyle = "cursor-pointer inline-flex hover:bg-[#4f5d39]";
+    const toolTipStyle = "pt-1 text-xs1 text-red-500";
+
     return (
-        <div>
-            <div className="w-40 inline-block">
+        <div className="pb-2 flex pl-8">
+            <Link href="/firstPage/hadicFirstPage" className={iconStyle}>
+                <BookIcon />
+                <div className={toolTipStyle}>Hadic Books</div>
+            </Link>
+            <div className="pl-6"></div>
+            <Link href="/firstPage/infoPage" className={iconStyle}>
+                <InfoIcon />
+                <div className={toolTipStyle}>About, Contact</div>
+            </Link>
+            {featureBookmark && (
                 <div className={iconStyle}>
-                    <Link href="/firstPage/infoPage">
-                        <InfoIcon />
+                    <Link href="/firstPage/bookmarkPage">
+                        <SaveIcon />
                     </Link>
                 </div>
-                <div className={iconStyle}>
-                    <Link href="/firstPage/hadicFirstPage">
-                        <BookIcon />
-                    </Link>
-                </div>
-                {featureBookmark && (
-                    <div className={iconStyle}>
-                        <Link href="/firstPage/bookmarkPage">
-                            <SaveIcon />
-                        </Link>
-                    </div>
-                )}
-            </div>
+            )}
         </div>
     );
 };
