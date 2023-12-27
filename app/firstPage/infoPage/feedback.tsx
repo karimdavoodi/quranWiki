@@ -8,7 +8,7 @@ const Feedback = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
 
-    const inputStyle = "bg-transparent  border border-green-900 rounded p-1";
+    const inputStyle = "bg-transparent  border border-gray-500 rounded p-1";
     const rowStyle = "flex pt-1";
     const textStyle = "w-40";
 
@@ -19,7 +19,6 @@ const Feedback = () => {
             );
             return;
         }
-        console.log("TODO: sendFeadback", name, email, type, message);
 
         fetch("/api/feedback", {
             method: "POST",
@@ -43,7 +42,7 @@ const Feedback = () => {
     };
 
     return (
-        <div className="pl-5">
+        <div className="pl-5 text-yellow-500">
             <div className={rowStyle}>
                 <div className={textStyle}>Name:</div>
                 <input

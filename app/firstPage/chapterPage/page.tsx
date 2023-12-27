@@ -25,7 +25,7 @@ const ChapterPage = () => {
                     <ArabicText text={aya.text} id={aya.id} />
                     <Translate chapterId={chapter?.id} ayaId={aya.id} />
                     <AyaMenu chapterId={chapter.id} ayaId={aya.id} />
-                    <hr className="opacity-10" />
+                    <hr className="opacity-20" />
                 </div>
             ))}
         </div>

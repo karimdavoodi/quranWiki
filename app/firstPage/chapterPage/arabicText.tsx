@@ -3,10 +3,10 @@ import React from "react";
 export const ArabicText = (probs: { text: string; id: number }) => {
     return (
         <div dir="rtl" className="flex font-['uthmanV2']" key={probs.id}>
-            <div className="text-gray-400 pl-2 text-xs">
+            <div className="text-gray-500 pl-2 text-xs">
                 {toArabic(probs.id)}
             </div>
-            <div className="text-yellow-600 text-justify">{probs.text}</div>
+            <div className="text-yellow-400 text-justify">{probs.text}</div>
         </div>
     );
 };

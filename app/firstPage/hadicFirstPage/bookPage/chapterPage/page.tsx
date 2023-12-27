@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { clearTextFormat } from "@/app/util";
 type HadicChapterType = {
     metadata: {
         english: {
@@ -72,7 +73,7 @@ const ChapterPage = () => {
                         {hadic.english.narrator}
                     </div>
                     <div className=" text-xs2 text-gray-200">
-                        {hadic.english.text}
+                        {clearTextFormat(hadic.english.text)}
                     </div>
                     <hr className="opacity-30  pl-5" />
                 </div>

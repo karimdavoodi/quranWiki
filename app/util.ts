@@ -13,3 +13,11 @@ export const quranChapterVerseToStr = (
 export const hashString = (str: string) => {
     return crypto.createHash("md5").update(str).digest("hex");
 };
+
+export const clearTextFormat = (text: string) => {
+    if (!text) {
+        return "";
+    }
+    return text.replace(/\n/g, " ").replace(/\t/g, " ").replace(/\s+/g, " ");
+};
+

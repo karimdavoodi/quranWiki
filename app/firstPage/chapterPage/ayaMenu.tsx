@@ -24,9 +24,9 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
     const [subMenu, setSubmenu] = useState<AyaSubmenuType>("");
 
     const iconStyle =
-        "cursor-pointer p-1 hover:border border-yellow-400 rounded";
+        "cursor-pointer p-1 hover:border border-yellow-500 rounded";
     const toolTipStyle =
-        "absolute pt-5 pl-0 text-xs1 opacity-0 text-yellow-300 hover:opacity-100";
+        "absolute pt-5 pl-0 text-xs1 opacity-0 text-yellow-500 hover:opacity-100";
     return (
         <div>
             <div className="flex p-1">

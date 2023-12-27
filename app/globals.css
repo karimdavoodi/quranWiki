@@ -4,13 +4,13 @@
 
 :root {
   --foreground: rgb(202, 202, 201);
-  --background: #373837;
+  --background: #3b423c;
   --background-hover: #363d2a;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #525e53;
+    --background: #3b423c;
   }
 }
 html {

@@ -7,7 +7,7 @@ import AddIcon from "../icons/add.svg";
 import hadicBookNames from "@/public/data/hadic/bookNames.json";
 import bibleBookNames from "@/public/data/bibleBookNames.json";
 import { quranEn } from "@/public/data/quran_en_sahih";
-import { quranChapterVerseToStr } from "@/app/util";
+import { clearTextFormat, quranChapterVerseToStr } from "@/app/util";
 
 export const Relation = (props: {
     item: Omit<IRelation, "date" | "userHash">;
@@ -116,12 +116,7 @@ export const Relation = (props: {
     );
 
     const setLimitedText = (realText: string) => {
-        setText(
-            realText
-                ?.replace(/\n/g, " ")
-                .replace(/\t/g, " ")
-                .replace(/\s+/g, " ")
-        );
+        setText(clearTextFormat(realText));
     };
 
     const setLikedNumber = (newLike: number) => {
@@ -146,7 +141,10 @@ export const Relation = (props: {
     };
 
     const addRelation = () => {
-        if (!text) {
+        if (!text || !chapter || !verse) {
+            return;
+        }
+        if (props.type !== "quran" && !book) {
             return;
         }
         fetch(`/api/relation`, {
@@ -169,10 +167,13 @@ export const Relation = (props: {
         setDisableAdd(true);
     };
 
-    const bgColor = "bg-gray-600";
-    const rowStyle = `text-xs2 flex flex-row items-center ${bgColor} border border-gray-900`;
-    const selectStyle = "bg-transparent border border-gray-500";
+    const bgColor = "bg-gray-700";
+    const rowStyle = `text-xs2 flex flex-row items-center ${bgColor} border border-gray-800`;
+    const selectStyle = "bg-transparent border border-gray-600";
     const likeStyle = "text-yellow-400 text-xs1 text-center";
+    const iconStyle = "cursor-pointer hover:border rounded border-yellow-400";
+    // const toolTipStyle =
+    //     "absolute pt-4 text-xs1 opacity-0 text-yellow-500 hover:opacity-100";
 
     return (
         <div className={rowStyle}>
@@ -229,12 +230,12 @@ export const Relation = (props: {
                 rows={4}
                 readOnly
             />
-            <div className="ml-auto flex-col pr-1 text-center">
+            <div className="ml-auto flex-col pr-1 pl-1 text-center">
                 {!isNew && (
                     <>
                         <div>
                             <div
-                                className="cursor-pointer"
+                                className={iconStyle}
                                 onClick={() => {
                                     if (liked - props.item.like <= 0) {
                                         setLikedNumber(liked + 1);
@@ -248,7 +249,7 @@ export const Relation = (props: {
 
                         <div>
                             <div
-                                className="cursor-pointer"
+                                className={iconStyle}
                                 onClick={() => {
                                     if (liked - props.item.like >= 0) {
                                         setLikedNumber(liked - 1);
@@ -261,13 +262,8 @@ export const Relation = (props: {
                     </>
                 )}
                 {isNew && !disableAdd && (
-                    <div
-                        className="cursor-pointer"
-                        onClick={() => {
-                            addRelation();
-                        }}
-                    >
-                        <AddIcon />
+                    <div className={iconStyle} onClick={() => addRelation()}>
+                        <AddIcon width={"20px"} height={"20px"} />
                     </div>
                 )}
             </div>

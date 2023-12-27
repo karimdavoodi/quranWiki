@@ -16,12 +16,15 @@ const BookPage = () => {
 
     return (
         <div className="p-1">
-            <div className="pt-8">{bookName}</div>
+            <div className="pt-8 text-yellow-500 ">{bookName}</div>
             <div className="p-3 text-left text-xs2">Chapters Ids</div>
             <hr className="opacity-10 pl-5" />
 
             {chapters.map((id, index) => (
-                <div key={index}>
+                <div
+                    key={index}
+                    className="w-1/2 inline-block hover:bg-[#4f5d39]"
+                >
                     <Link
                         href={{
                             pathname:
@@ -33,13 +36,12 @@ const BookPage = () => {
                         }}
                     >
                         <div
-                            className="pl-5 text-justify text-yellow-400"
+                            className="pl-5 text-center text-yellow-400"
                             key={index}
                         >
                             Chapter {id}
                         </div>
                     </Link>
-                    <hr className="opacity-10 w-40 pl-5" />
                 </div>
             ))}
         </div>
