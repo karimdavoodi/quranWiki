@@ -3,3 +3,7 @@ node_modules
 app/constant.ts
 site_cert
 package-lock.json
+
+sw.*
+workbox-*
+swe-worker-*

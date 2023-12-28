@@ -1,0 +1,32 @@
+{
+    "id": "quran-wiki",
+    "name": "Quran Wiki",
+    "short_name": "Quran Wiki",
+    "description": "The Quran Wiki App",
+    "icons": [
+        {
+            "src": "./icon_quran_72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "./icon_quran_192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./icon_quran_384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "./icon_quran_512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "/",
+    "scope": ".",
+    "display": "standalone",
+    "orientation": "portrait"
+}

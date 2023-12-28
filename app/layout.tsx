@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
     title: "Quran Wiki",
     description: "A App to understand Quran",
+    manifest: "/manifest.json",
 };
 
 export default function RootLayout({
