@@ -32,7 +32,6 @@ const Relations = (props: {
             })
             .catch((err) => {
                 console.log("Error on getting data", err);
-                setRelations([]);
             });
     }, [submenu]);
 
@@ -59,7 +58,7 @@ const Relations = (props: {
                     type: props.submenu as RelationType,
                     like: 0,
                 }}
-                key={`${relations.length}`}
+                key={`${new Date().getSeconds()}`}
                 type={submenu}
             />
         </div>

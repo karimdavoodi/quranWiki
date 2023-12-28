@@ -25,13 +25,17 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
 
     const iconStyle =
         "cursor-pointer p-1 hover:border border-yellow-500 rounded";
+    const iconStyleSeleceted = "border border-yellow-500 rounded";
     const toolTipStyle =
         "absolute pt-5 pl-0 text-xs1 opacity-0 text-yellow-500 hover:opacity-100";
     return (
         <div>
             <div className="flex p-1">
                 <div
-                    className={iconStyle}
+                    className={
+                        iconStyle +
+                        ` ${subMenu === "quran" ? iconStyleSeleceted : ""}`
+                    }
                     onClick={() =>
                         setSubmenu(subMenu !== "quran" ? "quran" : "")
                     }
@@ -40,7 +44,10 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
                     <Book1Icon />
                 </div>
                 <div
-                    className={iconStyle}
+                    className={
+                        iconStyle +
+                        ` ${subMenu === "hadic" ? iconStyleSeleceted : ""}`
+                    }
                     onClick={() =>
                         setSubmenu(subMenu !== "hadic" ? "hadic" : "")
                     }
@@ -49,7 +56,10 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
                     <BookIcon />
                 </div>
                 <div
-                    className={iconStyle}
+                    className={
+                        iconStyle +
+                        ` ${subMenu === "bible" ? iconStyleSeleceted : ""}`
+                    }
                     onClick={() =>
                         setSubmenu(subMenu !== "bible" ? "bible" : "")
                     }

@@ -16,8 +16,9 @@ async function setRelation(data: IRelation) {
             date: { $gte: date },
         }).exec();
         if (searchModel.length > 0) {
-            console.log("interval error");
-            return false;
+            throw new Error(
+                "You have already added this relation (RELATION_ADD_INTERVAL)"
+            );
         }
         // Check if duplicated
         const duplicatedFind = await Relation.find({
@@ -29,8 +30,7 @@ async function setRelation(data: IRelation) {
             relateToNumber: data.relateToNumber,
         }).exec();
         if (duplicatedFind.length > 0) {
-            console.log("relation already exist");
-            return false;
+            throw new Error("relation already exist (DUPLICATED)");
         }
 
         // Insert new feedback
@@ -54,8 +54,9 @@ async function updateRelation(data: IRelation) {
             date: { $gte: date },
         }).exec();
         if (searchModel.length > 0) {
-            console.log("interval error");
-            return;
+            throw new Error(
+                "You have already liked/disliked this relation (RELATION_LIKE_INTERVAL)"
+            );
         }
 
         const model = await Relation.findOne({
@@ -117,7 +118,7 @@ export async function GET(request: Request) {
     if (!chapterId || !ayaId || !type) {
         return Response.json({
             status: 400,
-            message: "Bad request",
+            message: "Bad request (INVALID PARAMETERS)",
         });
     }
     const searchData: Partial<IRelation> = {
