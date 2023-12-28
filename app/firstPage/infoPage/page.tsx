@@ -11,9 +11,10 @@ const infoPage = () => {
                 We think by finding relation between each Quran verse and Hadic
                 and Bible, we can understand it better. If you agree, please
                 help us by making connection between them by icons below each
-                verse.
+                verse. You can contribute on improving QuranWiki.org in the
+                Github: https://github.com/karimdavoodi/quranWiki
                 <div className="text-green-500">
-                    Please send use your feadback:
+                    Please send us your feedback:
                 </div>
             </div>
             <Feedback />
