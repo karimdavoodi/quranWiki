@@ -27,6 +27,5 @@
     ],
     "start_url": "/",
     "scope": ".",
-    "display": "standalone",
-    "orientation": "portrait"
+    "display": "standalone"
 }

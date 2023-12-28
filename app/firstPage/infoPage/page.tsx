@@ -11,8 +11,22 @@ const infoPage = () => {
                 We think by finding relation between each Quran verse and Hadic
                 and Bible, we can understand it better. If you agree, please
                 help us by making connection between them by icons below each
-                verse. You can contribute on improving QuranWiki.org in the
-                Github: https://github.com/karimdavoodi/quranWiki
+                verse.
+                <br className="text-xs1" />
+                You can contribute on improving QuranWiki.org in the Github:
+                https://github.com/karimdavoodi/quranWiki
+                <ul className="test-xs0 pl-3 text-yellow-600">
+                    <li>- Quran source: https://tanzil.net</li>
+                    <li>- Quran Translation: Sahih International</li>
+                    <li>
+                        - Hadic source:
+                        https://github.com/A7med3bdulBaset/hadith-json
+                    </li>
+                    <li>
+                        - Bible source:
+                        https://www.biblesupersearch.com/bible-downloads/
+                    </li>
+                </ul>
                 <div className="text-green-500">
                     Please send us your feedback:
                 </div>

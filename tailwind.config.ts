@@ -15,9 +15,11 @@ const config: Config = {
             },
         },
         fontSize: {
+            xs0: ["8px", "12px"],
             xs1: ["12px", "16px"],
             xs2: ["16px", "24px"],
             xs3: ["20px", "28px"],
+            xs4: ["32px", "36px"],
         },
     },
     plugins: [],

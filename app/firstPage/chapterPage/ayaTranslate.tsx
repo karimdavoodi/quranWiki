@@ -6,8 +6,13 @@ const Translate = (probs: { chapterId: number; ayaId: number }) => {
     const id = quranChapterVerseToStr(probs.chapterId, probs.ayaId);
 
     return (
-        <div className="pl-0 pr-2 pt-1 text-xs3 text-left text-yello-300">
-            {quranEn[id]}
+        <div>
+            <div className="text-left text-xs1 text-gray-400">
+                {probs.chapterId}:{probs.ayaId}
+            </div>
+            <div className="text-xs3 text-left text-gray-200">
+                {quranEn[id]}
+            </div>
         </div>
     );
 };

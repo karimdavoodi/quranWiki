@@ -167,69 +167,70 @@ export const Relation = (props: {
         setDisableAdd(true);
     };
 
-    const bgColor = "bg-gray-700";
-    const rowStyle = `text-xs2 flex flex-row items-center ${bgColor} border border-gray-800`;
+    const rowStyle = `text-xs2 flex flex-row items-center bg-gray-700 border border-gray-800`;
     const selectStyle = "bg-transparent border border-gray-600";
     const likeStyle = "text-yellow-400 text-xs1 text-center";
     const iconStyle = "cursor-pointer hover:border rounded border-yellow-400";
-    // const toolTipStyle =
-    //     "absolute pt-4 text-xs1 opacity-0 text-yellow-500 hover:opacity-100";
 
     return (
         <div className={rowStyle}>
-            <div className="flex flex-col text-xs1">
-                {(props.type === "bible" || props.type === "hadic") && (
+            {isNew && (
+                <div className="flex flex-col">
+                    {(props.type === "bible" || props.type === "hadic") && (
+                        <select
+                            className={selectStyle}
+                            disabled={props.item.relateToBook !== ""}
+                            defaultValue={book}
+                            onChange={(e) => setBook(e.target.value)}
+                        >
+                            {bookNames.map((bookName, index) => (
+                                <option value={bookName} key={index}>
+                                    {bookName}
+                                </option>
+                            ))}
+                        </select>
+                    )}
+                    {props.type === "quran" && (
+                        <select className={selectStyle} disabled={true}>
+                            <option value="Holy quran">Holy Quran</option>
+                        </select>
+                    )}
                     <select
                         className={selectStyle}
-                        disabled={props.item.relateToBook !== ""}
-                        defaultValue={book}
-                        onChange={(e) => setBook(e.target.value)}
+                        disabled={props.item.relateToChapter !== 0}
+                        defaultValue={chapter}
+                        onChange={(e) => {
+                            setChapter(Number(e.target.value));
+                        }}
                     >
-                        {bookNames.map((bookName, index) => (
-                            <option value={bookName} key={index}>
-                                {bookName}
+                        {chapters.map((chapter, index) => (
+                            <option value={chapter} key={index}>
+                                {chapter > 0 ? `Chapter ${chapter}` : ""}
                             </option>
                         ))}
                     </select>
-                )}
-                {props.type === "quran" && (
-                    <select className={selectStyle} disabled={true}>
-                        <option value="Holy quran">Holy Quran</option>
+                    <select
+                        className={selectStyle}
+                        disabled={props.item.relateToNumber !== 0}
+                        defaultValue={verse}
+                        onChange={(e) => setVerse(Number(e.target.value))}
+                    >
+                        {verses.map((verse, index) => (
+                            <option value={verse} key={index}>
+                                {verse || ""}
+                            </option>
+                        ))}
                     </select>
+                </div>
+            )}
+            <div className="inline-block w-full pl-1">
+                {!isNew && (
+                    <div className="text-left text-gray-400">
+                        {book} {chapter}:{verse}
+                    </div>
                 )}
-                <select
-                    className={selectStyle}
-                    disabled={props.item.relateToChapter !== 0}
-                    defaultValue={chapter}
-                    onChange={(e) => {
-                        setChapter(Number(e.target.value));
-                    }}
-                >
-                    {chapters.map((chapter, index) => (
-                        <option value={chapter} key={index}>
-                            {chapter > 0 ? `Chapter ${chapter}` : ""}
-                        </option>
-                    ))}
-                </select>
-                <select
-                    className={selectStyle}
-                    disabled={props.item.relateToNumber !== 0}
-                    defaultValue={verse}
-                    onChange={(e) => setVerse(Number(e.target.value))}
-                >
-                    {verses.map((verse, index) => (
-                        <option value={verse} key={index}>
-                            {verse || ""}
-                        </option>
-                    ))}
-                </select>
+                <div className="text-justify text-gray-200">{text}</div>
             </div>
-            <textarea
-                className="bg-transparent pl-1 pr-1 text-xs1 w-full text-justify"
-                value={text}
-                rows={4}
-                readOnly
-            />
             <div className="ml-auto flex-col pr-1 pl-1 text-center">
                 {!isNew && (
                     <>
@@ -242,7 +243,7 @@ export const Relation = (props: {
                                     }
                                 }}
                             >
-                                <LikeIcon />
+                                <LikeIcon width={"20px"} height={"20px"} />
                             </div>
                             <div className={likeStyle}>{liked}</div>
                         </div>
@@ -256,7 +257,7 @@ export const Relation = (props: {
                                     }
                                 }}
                             >
-                                <DislikeIcon />
+                                <DislikeIcon width={"20px"} height={"20px"} />
                             </div>
                         </div>
                     </>
