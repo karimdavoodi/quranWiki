@@ -15,8 +15,8 @@ const ChapterPage = () => {
 
     return (
         <div className="p-1">
-            <div className="font-['uthmanV2'] text-green-500 text-xs4">
-                {chapter?.name}
+            <div className="font-['uthmanV2'] text-green-400 text-xs4 pt-5 pb-2">
+                سورة {chapter?.name}
             </div>
             <div className="pb-3 font-['uthmanV2'] text-xs3">
                 {chapter?.id !== 1 && chapter?.id !== 9

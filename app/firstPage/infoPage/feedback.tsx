@@ -8,7 +8,8 @@ const Feedback = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
 
-    const inputStyle = "bg-transparent  border border-gray-500 rounded p-1";
+    const inputStyle =
+        "bg-transparent text-gray-100  border border-gray-500 rounded p-1";
     const rowStyle = "flex pt-1";
     const textStyle = "w-16";
 

@@ -13,9 +13,11 @@ const infoPage = () => {
                 help us by making connection between them by icons below each
                 verse.
                 <br className="text-xs1" />
-                You can contribute on improving QuranWiki.org in the Github:
-                https://github.com/karimdavoodi/quranWiki
-                <ul className="test-xs0 pl-3 text-yellow-600">
+                Sources:
+                <ul className="test-xs0 pl-3 text-xs1">
+                    <li>
+                        - App source: https://github.com/karimdavoodi/quranWiki
+                    </li>
                     <li>- Quran source: https://tanzil.net</li>
                     <li>- Quran Translation: Sahih International</li>
                     <li>
@@ -26,6 +28,7 @@ const infoPage = () => {
                         - Bible source:
                         https://www.biblesupersearch.com/bible-downloads/
                     </li>
+                    <li>- Audio source: https://everyayah.com/</li>
                 </ul>
                 <div className="text-green-500">
                     Please send us your feedback:

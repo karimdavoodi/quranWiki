@@ -14,11 +14,7 @@ import Translate from "./ayaTranslate";
 import Relations from "./ayaRelations";
 import AyaDate from "./ayaDate";
 import { quranChapterVerseToStr } from "@/app/util";
-import {
-    featureAyaDate,
-    featureBookmark,
-    featureTranslate,
-} from "@/app/constant";
+import { featureAyaDate, featureBookmark } from "@/app/constant";
 
 export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
     const [subMenu, setSubmenu] = useState<AyaSubmenuType>("");
@@ -67,19 +63,6 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
                     <div className={toolTipStyle}>Related Bible verses</div>
                     <BookIcon />
                 </div>
-                {featureTranslate && (
-                    <div
-                        className={iconStyle}
-                        onClick={() =>
-                            setSubmenu(
-                                subMenu !== "translate" ? "translate" : ""
-                            )
-                        }
-                    >
-                        <div className={toolTipStyle}>English translate</div>
-                        <LanguageIcon />
-                    </div>
-                )}
                 {featureAyaDate && (
                     <div
                         className={iconStyle}
