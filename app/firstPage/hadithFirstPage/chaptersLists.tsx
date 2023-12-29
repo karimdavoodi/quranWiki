@@ -16,13 +16,14 @@ export const ChaptersList = () => {
                                 folder: book.folder,
                                 chapterNumber: book.chapterNumber,
                                 bookName: book.title,
+                                bookAuthor: book.author,
                             },
                         }}
                     >
                         <div className="p-1 flex hover:bg-[#4f5d39]">
-                            <div className="text-yellow-300 font-serif text-xs3">
+                            <h2 className="text-yellow-300 font-serif text-xs3">
                                 {book.title}
-                            </div>
+                            </h2>
                         </div>
                     </Link>
                     <hr className="opacity-10 w-auto" />

@@ -2,41 +2,49 @@
     {
         "title": "Sahih al-Bukhari",
         "folder": "bukhari",
+        "author": "Imam Muhammad ibn Ismail al-Bukhari",
         "chapterNumber": 97
     },
     {
         "title": "Sahih Muslim",
         "folder": "muslim",
+        "author": "Imam Muslim ibn al-Hajjaj al-Naysaburi",
         "chapterNumber": 57
     },
     {
         "title": "Sunan Abi Dawud",
         "folder": "abudawud",
+        "author": "Imam Sulayman ibn al-Ash'ath Abu Dawud al-Sijistani",
         "chapterNumber": 43
     },
     {
         "title": "Jami al-Tirmidhi",
         "folder": "tirmidhi",
+        "author": "Imam Abu Isa Muhammad ibn Isa al-Tirmidhi",
         "chapterNumber": 49
     },
     {
         "title": "Ahmad ibn Hanbal",
         "folder": "ahmed",
+        "author": "Imam Ahmad ibn Hanbal",
         "chapterNumber": 8
     },
     {
         "title": "Sunan Ibn Majah",
         "folder": "ibnmajah",
+        "author": "Imam Muhammad ibn Yazid Ibn Majah al-Qazwini",
         "chapterNumber": 38
     },
     {
         "title": "Muwatta Malik",
         "folder": "malik",
+        "author": "Imam Malik ibn Anas",
         "chapterNumber": 61
     },
     {
         "title": "Sunan al-Nasai",
         "folder": "nasai",
+        "author": "Imam Ahmad ibn Shu'ayb al-Nasa'i",
         "chapterNumber": 52
     }
 ]

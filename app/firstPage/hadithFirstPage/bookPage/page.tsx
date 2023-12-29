@@ -8,6 +8,7 @@ const BookPage = () => {
     const folder = searchParams.get("folder");
     const chapterNumber = Number(searchParams.get("chapterNumber"));
     const bookName = searchParams.get("bookName");
+    const bookAuthor = searchParams.get("bookAuthor");
 
     const chapters = Array.from(
         { length: chapterNumber },
@@ -15,9 +16,9 @@ const BookPage = () => {
     );
 
     return (
-        <div className="p-1">
-            <div className="pt-8 text-yellow-500 ">{bookName}</div>
-            <div className="p-3 text-left text-xs2">Chapters Ids</div>
+        <div className="p-1 font-serif">
+            <h1 className="pt-8  text-yellow-500 ">{bookName}</h1>
+            <h2 className=" pb-3 text-yellow-600 text-xs2">{bookAuthor}</h2>
             <hr className="opacity-10 pl-5" />
 
             {chapters.map((id, index) => (
@@ -35,12 +36,12 @@ const BookPage = () => {
                             },
                         }}
                     >
-                        <div
-                            className="pl-2 text-yellow-300 text-xs3 font-serif"
+                        <h2
+                            className="pl-2 text-yellow-300 text-xs3"
                             key={index}
                         >
                             Chapter {id}
-                        </div>
+                        </h2>
                     </Link>
                 </div>
             ))}

@@ -4,7 +4,7 @@ import { ChaptersList } from "./chaptersLists";
 const FirstPage = () => {
     return (
         <div>
-            <div className="p-5 font-serif text-yellow-600">Haidc Books</div>
+            <h1 className="p-5 font-serif text-yellow-600">Hadith Books</h1>
             <ChaptersList />
         </div>
     );

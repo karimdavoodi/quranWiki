@@ -45,20 +45,20 @@ const ChapterPage = () => {
     return (
         <div className="p-1">
             <div className="p-3 text-left text-xs3 font-bold text-gray-300">
-                <div className="flex">
+                <h1 className="flex">
                     <div>Book: </div>
-                    <div className="text-yellow-400 pl-1">{bookTitle}</div>
-                </div>
+                    <h2 className="text-yellow-400 pl-1">{bookTitle}</h2>
+                </h1>
                 <div className="text-xs1">
                     <div className="flex">
                         <div>Author: </div>
-                        <div className="text-yellow-500 pl-1">{bookAuthor}</div>
+                        <h3 className="text-yellow-500 pl-1">{bookAuthor}</h3>
                     </div>
                     <div className="flex">
                         <div>Topic: </div>
-                        <div className="text-yellow-500 pl-1">
+                        <h3 className="text-yellow-500 pl-1">
                             {bookIntroduction}
-                        </div>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -66,9 +66,9 @@ const ChapterPage = () => {
 
             {hadiths.map((hadith, index) => (
                 <div key={index} className="p-2 text-justify">
-                    <div className=" text-xs1 text-yellow-400">
+                    <h4 className=" text-xs1 text-yellow-400">
                         Chapter {hadith.chapterId}, Hadith {hadith.id}
-                    </div>
+                    </h4>
                     <div className=" text-xs1 text-gray-400">
                         {hadith.english.narrator}
                     </div>
