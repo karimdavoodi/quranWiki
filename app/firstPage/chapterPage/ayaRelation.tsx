@@ -4,10 +4,12 @@ import LikeIcon from "../icons/thumb_up.svg";
 import DislikeIcon from "../icons/thumb_down.svg";
 import AddIcon from "../icons/add.svg";
 
-import hadicBookNames from "@/public/data/hadic/bookNames.json";
+import hadicBookNames from "@/public/data/hadith/bookNames.json";
 import bibleBookNames from "@/public/data/bibleBookNames.json";
 import { quranEn } from "@/public/data/quran_en_sahih";
 import { clearTextFormat, quranChapterVerseToStr } from "@/app/util";
+
+const MAX_TEXT_LENGTH = 200;
 
 export const Relation = (props: {
     item: Omit<IRelation, "date" | "userHash">;
@@ -22,12 +24,13 @@ export const Relation = (props: {
     const [liked, setLiked] = useState(props.item.like);
     const [text, setText] = useState("");
     const [disableAdd, setDisableAdd] = useState(false);
+    const [showCompleteText, setShowCompleteText] = useState(false);
 
     const [bookNames, chapters, verses] = useMemo(() => {
         let bookNames: string[] = [""];
         let chapterNumbers = 114;
         let verseNumber = 300;
-        if (props.type === "hadic") {
+        if (props.type === "hadith") {
             bookNames.push(...hadicBookNames.map((item) => item.title));
             chapterNumbers = 100;
         }
@@ -61,7 +64,7 @@ export const Relation = (props: {
                 if (newText !== text) {
                     setLimitedText(newText);
                 }
-            } else if (type === "hadic") {
+            } else if (type === "hadith") {
                 if ((book === "" || chapter === 0) && text !== "") {
                     setText("");
                     return;
@@ -73,7 +76,7 @@ export const Relation = (props: {
                         chapterNumber: number;
                     }) => item.title === book
                 )?.folder;
-                fetch(`/data/hadic/${folder}/${chapter}.json`)
+                fetch(`/data/hadith/${folder}/${chapter}.json`)
                     .then((resp) => resp.json())
                     .then((chap) => {
                         const newText = chap?.hadiths.find(
@@ -172,11 +175,12 @@ export const Relation = (props: {
     const likeStyle = "text-yellow-400 text-xs1 text-center";
     const iconStyle = "cursor-pointer hover:border rounded border-yellow-400";
 
+    const showAllText = showCompleteText || text.length < MAX_TEXT_LENGTH;
     return (
         <div className={rowStyle}>
             {isNew && (
                 <div className="flex flex-col">
-                    {(props.type === "bible" || props.type === "hadic") && (
+                    {(props.type === "bible" || props.type === "hadith") && (
                         <select
                             className={selectStyle}
                             disabled={props.item.relateToBook !== ""}
@@ -229,7 +233,21 @@ export const Relation = (props: {
                         {book} {chapter}:{verse}
                     </div>
                 )}
-                <div className="text-justify text-gray-200">{text}</div>
+                <div className="text-justify text-gray-200">
+                    {showAllText
+                        ? text
+                        : text.substring(0, MAX_TEXT_LENGTH - 20) + "... "}
+                    {!showAllText ? (
+                        <div
+                            className="text-xs2 inline-block text-yellow-600 cursor-pointer"
+                            onClick={() => {
+                                setShowCompleteText(true);
+                            }}
+                        >
+                            more
+                        </div>
+                    ) : null}
+                </div>
             </div>
             <div className="ml-auto flex-col pr-1 pl-1 text-center">
                 {!isNew && (

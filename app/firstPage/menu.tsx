@@ -12,9 +12,9 @@ export const Menu = () => {
 
     return (
         <div className="pb-2 flex pl-8">
-            <Link href="/firstPage/hadicFirstPage" className={iconStyle}>
+            <Link href="/firstPage/hadithFirstPage" className={iconStyle}>
                 <BookIcon />
-                <div className={toolTipStyle}>Hadic Books</div>
+                <div className={toolTipStyle}>Hadith Books</div>
             </Link>
             <div className="pl-6"></div>
             <Link href="/firstPage/infoPage" className={iconStyle}>

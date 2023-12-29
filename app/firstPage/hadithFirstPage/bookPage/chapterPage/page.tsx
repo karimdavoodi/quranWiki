@@ -24,13 +24,13 @@ const ChapterPage = () => {
     const [bookTitle, setBookTitle] = useState("");
     const [bookAuthor, setBookAuthor] = useState("");
     const [bookIntroduction, setBookIntroduction] = useState("");
-    const [hadics, setHadics] = useState<HadicChapterType["hadiths"]>([]);
+    const [hadiths, setHadics] = useState<HadicChapterType["hadiths"]>([]);
     const searchParams = useSearchParams();
     const folder = searchParams.get("folder");
     const chapter = Number(searchParams.get("chapter"));
 
     useEffect(() => {
-        fetch(`/data/hadic/${folder}/${chapter}.json`)
+        fetch(`/data/hadith/${folder}/${chapter}.json`)
             .then((res) => res.json())
             .then((data: HadicChapterType) => {
                 setBookTitle(data?.metadata?.english?.title || "");
@@ -64,16 +64,16 @@ const ChapterPage = () => {
             </div>
             <hr className="opacity-10 w-40 pl-5" />
 
-            {hadics.map((hadic, index) => (
+            {hadiths.map((hadith, index) => (
                 <div key={index} className="p-2 text-justify">
                     <div className=" text-xs1 text-yellow-400">
-                        Chapter {hadic.chapterId}, Hadic {hadic.id}
+                        Chapter {hadith.chapterId}, Hadith {hadith.id}
                     </div>
                     <div className=" text-xs1 text-gray-400">
-                        {hadic.english.narrator}
+                        {hadith.english.narrator}
                     </div>
                     <div className=" text-xs2 text-gray-200">
-                        {clearTextFormat(hadic.english.text)}
+                        {clearTextFormat(hadith.english.text)}
                     </div>
                     <hr className="opacity-30  pl-5" />
                 </div>

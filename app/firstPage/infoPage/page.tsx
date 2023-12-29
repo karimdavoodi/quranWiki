@@ -8,7 +8,7 @@ const infoPage = () => {
                 <div className="text-green-500">
                     QuranWiki.org is a Sadaqah Jariyah
                 </div>
-                We think by finding relation between each Quran verse and Hadic
+                We think by finding relation between each Quran verse and Hadith
                 and Bible, we can understand it better. If you agree, please
                 help us by making connection between them by icons below each
                 verse.
@@ -19,7 +19,7 @@ const infoPage = () => {
                     <li>- Quran source: https://tanzil.net</li>
                     <li>- Quran Translation: Sahih International</li>
                     <li>
-                        - Hadic source:
+                        - Hadith source:
                         https://github.com/A7med3bdulBaset/hadith-json
                     </li>
                     <li>

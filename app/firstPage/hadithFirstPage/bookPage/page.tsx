@@ -28,7 +28,7 @@ const BookPage = () => {
                     <Link
                         href={{
                             pathname:
-                                "/firstPage/hadicFirstPage/bookPage/chapterPage",
+                                "/firstPage/hadithFirstPage/bookPage/chapterPage",
                             query: {
                                 folder: folder,
                                 chapter: id,

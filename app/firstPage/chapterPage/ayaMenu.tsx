@@ -46,13 +46,13 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
                 <div
                     className={
                         iconStyle +
-                        ` ${subMenu === "hadic" ? iconStyleSeleceted : ""}`
+                        ` ${subMenu === "hadith" ? iconStyleSeleceted : ""}`
                     }
                     onClick={() =>
-                        setSubmenu(subMenu !== "hadic" ? "hadic" : "")
+                        setSubmenu(subMenu !== "hadith" ? "hadith" : "")
                     }
                 >
-                    <div className={toolTipStyle}>Related Hadic</div>
+                    <div className={toolTipStyle}>Related Hadith</div>
                     <BookIcon />
                 </div>
                 <div
@@ -119,7 +119,7 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
             )}
             {(subMenu === "quran" ||
                 subMenu === "bible" ||
-                subMenu === "hadic") && (
+                subMenu === "hadith") && (
                 <Relations
                     chapterId={probs.chapterId}
                     ayaId={probs.ayaId}

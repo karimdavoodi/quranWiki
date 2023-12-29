@@ -2,12 +2,12 @@ import { Schema, model, models, Model } from "mongoose";
 
 export type AyaSubmenuType =
     | "quran"
-    | "hadic"
+    | "hadith"
     | "bible"
     | "translate"
     | "date"
     | "";
-export type RelationType = "quran" | "hadic" | "bible";
+export type RelationType = "quran" | "hadith" | "bible";
 
 export interface IFeedback {
     name: string;
@@ -87,7 +87,7 @@ export { Relation, Feedback };
         - list
    - old commentary
        - list
-   - related hadic
+   - related hadith
        - list
   Sentence states:
    - DARKGREEN: new

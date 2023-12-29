@@ -1,17 +1,17 @@
 import React from "react";
 import Link from "next/link";
 
-import hadics from "@/public/data/hadic/bookNames.json";
+import hadiths from "@/public/data/hadith/bookNames.json";
 
 export const ChaptersList = () => {
     return (
         <div>
             <hr />
-            {hadics.map((book, index) => (
+            {hadiths.map((book, index) => (
                 <div key={index} className="w-2/3 inline-block">
                     <Link
                         href={{
-                            pathname: "/firstPage/hadicFirstPage/bookPage",
+                            pathname: "/firstPage/hadithFirstPage/bookPage",
                             query: {
                                 folder: book.folder,
                                 chapterNumber: book.chapterNumber,
