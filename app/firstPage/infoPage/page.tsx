@@ -19,7 +19,7 @@ const infoPage = () => {
                         - App source: https://github.com/karimdavoodi/quranWiki
                     </li>
                     <li>- Quran source: https://tanzil.net</li>
-                    <li>- Quran Translation: Sahih International</li>
+                    <li>- Quran Translation: The Clear Quran</li>
                     <li>
                         - Hadith source:
                         https://github.com/A7med3bdulBaset/hadith-json

@@ -6,7 +6,7 @@ import AddIcon from "../icons/add.svg";
 
 import hadicBookNames from "@/public/data/hadith/bookNames.json";
 import bibleBookNames from "@/public/data/bibleBookNames.json";
-import { quranEn } from "@/public/data/quran_en_sahih";
+import { quranEn } from "@/public/data/quran_en_clear";
 import { clearTextFormat, quranChapterVerseToStr } from "@/app/util";
 
 const MAX_TEXT_LENGTH = 200;

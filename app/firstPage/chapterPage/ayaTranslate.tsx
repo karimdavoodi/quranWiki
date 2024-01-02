@@ -1,5 +1,5 @@
 import React from "react";
-import { quranEn } from "@/public/data/quran_en_sahih";
+import { quranEn } from "@/public/data/quran_en_clear";
 import { quranChapterVerseToStr } from "@/app/util";
 
 const Translate = (probs: { chapterId: number; ayaId: number }) => {
