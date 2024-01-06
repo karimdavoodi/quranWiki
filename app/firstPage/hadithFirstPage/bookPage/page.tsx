@@ -1,14 +1,20 @@
 "use client";
-import React from "react";
-import { useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
 const BookPage = () => {
-    const searchParams = useSearchParams();
-    const folder = searchParams.get("folder");
-    const chapterNumber = Number(searchParams.get("chapterNumber"));
-    const bookName = searchParams.get("bookName");
-    const bookAuthor = searchParams.get("bookAuthor");
+    const [folder, setFolder] = useState("");
+    const [chapterNumber, setChapterNumber] = useState(0);
+    const [bookName, setBookName] = useState("");
+    const [bookAuthor, setBookAuthor] = useState("");
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        setFolder(searchParams.get("folder") ?? "");
+        setChapterNumber(Number(searchParams.get("chapterNumber")) ?? 0);
+        setBookName(searchParams.get("bookName") ?? "");
+        setBookAuthor(searchParams.get("bookAuthor") ?? "");
+    }, []);
 
     const chapters = Array.from(
         { length: chapterNumber },

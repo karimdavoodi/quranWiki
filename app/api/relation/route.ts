@@ -5,7 +5,11 @@ import {
     RELATION_LIKE_INTERVAL,
     dbUrl,
 } from "@/app/constant";
-import { hashString } from "@/app/util";
+import crypto from "crypto";
+
+const hashString = (str: string) => {
+    return crypto.createHash("md5").update(str).digest("hex");
+};
 async function setRelation(data: IRelation) {
     try {
         await connect(dbUrl);

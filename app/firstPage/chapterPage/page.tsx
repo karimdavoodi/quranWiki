@@ -1,6 +1,5 @@
 "use client";
-import React from "react";
-import { useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 
 import { quranArabic } from "@/public/data/quran_ar";
 import { ArabicText } from "./arabicText";
@@ -8,8 +7,11 @@ import { AyaMenu } from "./ayaMenu";
 import Translate from "./ayaTranslate";
 
 const ChapterPage = () => {
-    const searchParams = useSearchParams();
-    const id = searchParams.get("id");
+    const [id, setId] = useState("0");
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        setId(searchParams.get("id") || "0");
+    }, []);
 
     const chapter = quranArabic.find((chapter) => chapter.id.toString() === id);
 

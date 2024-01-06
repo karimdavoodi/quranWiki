@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     description:
         "Quran Wiki is Application to understand Quran by connecting Quran verses to other religious texts",
     manifest: "/manifest.json",
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+        },
+    },
 };
 
 export default function RootLayout({

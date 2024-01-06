@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
-import Link from "next/link";
+
 import { clearTextFormat } from "@/app/util";
+
 type HadicChapterType = {
     metadata: {
         english: {
@@ -25,11 +25,12 @@ const ChapterPage = () => {
     const [bookAuthor, setBookAuthor] = useState("");
     const [bookIntroduction, setBookIntroduction] = useState("");
     const [hadiths, setHadics] = useState<HadicChapterType["hadiths"]>([]);
-    const searchParams = useSearchParams();
-    const folder = searchParams.get("folder");
-    const chapter = Number(searchParams.get("chapter"));
 
     useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const folder = searchParams.get("folder");
+        const chapter = searchParams.get("chapter");
+
         fetch(`/data/hadith/${folder}/${chapter}.json`)
             .then((res) => res.json())
             .then((data: HadicChapterType) => {
@@ -40,7 +41,7 @@ const ChapterPage = () => {
                 );
                 setHadics(data?.hadiths || []);
             });
-    }, [folder, chapter]);
+    }, []);
 
     return (
         <div className="p-1">
