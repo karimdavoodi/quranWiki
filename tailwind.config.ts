@@ -20,6 +20,7 @@ const config: Config = {
             xs2: ["16px", "24px"],
             xs3: ["20px", "28px"],
             xs4: ["32px", "36px"],
+            lx: ["38px", "60px"],
         },
     },
     plugins: [],

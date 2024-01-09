@@ -1,7 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import BackIcon from "../../../icons/back.svg";
 
 import { clearTextFormat } from "@/app/util";
+import Link from "next/link";
 
 type HadicChapterType = {
     metadata: {
@@ -21,21 +23,26 @@ type HadicChapterType = {
     }>;
 };
 const ChapterPage = () => {
-    const [bookTitle, setBookTitle] = useState("");
+    const [folder, setFolder] = useState("");
+    const [chapterNumber, setChapterNumber] = useState(0);
+    const [bookName, setBookName] = useState("");
     const [bookAuthor, setBookAuthor] = useState("");
+
     const [bookIntroduction, setBookIntroduction] = useState("");
     const [hadiths, setHadics] = useState<HadicChapterType["hadiths"]>([]);
 
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
-        const folder = searchParams.get("folder");
-        const chapter = searchParams.get("chapter");
+        setChapterNumber(Number(searchParams.get("chapterNumber")) ?? 0);
+        setBookName(searchParams.get("bookName") ?? "");
+        setBookAuthor(searchParams.get("bookAuthor") ?? "");
+        const chapterId = searchParams.get("chapterId") ?? "0";
+        const folder = searchParams.get("folder") ?? "";
+        setFolder(folder);
 
-        fetch(`/data/hadith/${folder}/${chapter}.json`)
+        fetch(`/data/hadith/${folder}/${chapterId}.json`)
             .then((res) => res.json())
             .then((data: HadicChapterType) => {
-                setBookTitle(data?.metadata?.english?.title || "");
-                setBookAuthor(data?.metadata?.english?.author || "");
                 setBookIntroduction(
                     data?.metadata?.english?.introduction || ""
                 );
@@ -45,10 +52,26 @@ const ChapterPage = () => {
 
     return (
         <div className="p-1">
-            <div className="p-3 text-left text-xs3 font-bold text-gray-300">
-                <h1 className="flex">
-                    <div>Book: </div>
-                    <h2 className="text-yellow-400 pl-1">{bookTitle}</h2>
+            <Link
+                href={{
+                    pathname: "/firstPage/hadithFirstPage/bookPage",
+                    query: {
+                        folder: folder,
+                        chapterNumber: chapterNumber,
+                        bookName: bookName,
+                        bookAuthor: bookAuthor,
+                    },
+                }}
+                className="flex w-12 p-1"
+            >
+                <BackIcon />
+                <div className="text-xs2 text-gray-100-400">Back</div>
+            </Link>
+
+            <div className="pt-7 p-3 text-left font-bold text-gray-300">
+                <h1 className="flex text-xs3">
+                    <div>Hadith Book: </div>
+                    <h2 className="text-yellow-400 pl-1">{bookName}</h2>
                 </h1>
                 <div className="text-xs1">
                     <div className="flex">

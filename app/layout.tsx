@@ -1,19 +1,24 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Quran Wiki",
     authors: [{ name: "Karim Davoodi" }],
-    keywords: ["Quran", "Hadith", "Islam", "Quran Wiki", "Bible"],
-    category: "Quran",
-    classification: "Religious texts",
+    keywords: [
+        "Quran",
+        "Hadith",
+        "Islam",
+        "Islamic books",
+        "Quran Wiki",
+        "Bible",
+    ],
     abstract:
-        "Quran Wiki is Application to understand the meaning of the Quran by connecting its verse to other verses and Hadith and Bible.",
+        "QuranWiki is an application that helps us understand the Quran by connecting its verses to other religious texts.",
     description:
-        "Quran Wiki is Application to understand Quran by connecting Quran verses to other religious texts",
+        "QuranWiki is an application that helps us understand the Quran by connecting its verses to other religious texts.",
     manifest: "/manifest.json",
     robots: {
         index: true,
@@ -25,14 +30,10 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  )
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+    return (
+        <html lang="en">
+            <body className={inter.className}>{children}</body>
+        </html>
+    );
 }

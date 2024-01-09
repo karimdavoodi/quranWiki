@@ -43,7 +43,7 @@ const Feedback = () => {
     };
 
     return (
-        <div className=" text-yellow-500">
+        <div className="text-xs2 text-gray-200">
             <div className={rowStyle}>
                 <div className={textStyle}>Name:</div>
                 <input

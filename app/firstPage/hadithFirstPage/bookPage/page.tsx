@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import BackIcon from "../../icons/back.svg";
 
 const BookPage = () => {
     const [folder, setFolder] = useState("");
@@ -23,7 +24,12 @@ const BookPage = () => {
 
     return (
         <div className="p-1 font-serif">
-            <h1 className="pt-8  text-yellow-500 ">{bookName}</h1>
+            <Link href="/firstPage/hadithFirstPage" className="flex w-12 p-1">
+                <BackIcon />
+                <div className="text-xs2 text-gray-100-400">Back</div>
+            </Link>
+
+            <h1 className="pt-8 text-green-300 ">{bookName}</h1>
             <h2 className=" pb-3 text-yellow-600 text-xs2">{bookAuthor}</h2>
             <hr className="opacity-10 pl-5" />
 
@@ -38,7 +44,10 @@ const BookPage = () => {
                                 "/firstPage/hadithFirstPage/bookPage/chapterPage",
                             query: {
                                 folder: folder,
-                                chapter: id,
+                                chapterId: id,
+                                chapterNumber: chapterNumber,
+                                bookName: bookName,
+                                bookAuthor: bookAuthor,
                             },
                         }}
                     >
