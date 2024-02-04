@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import BackIcon from "../../../icons/back.svg";
+import ShareIcon from "../../../icons/share.svg";
 
-import { clearTextFormat } from "@/app/util";
+import { clearTextFormat, startBmInterval } from "@/app/util";
 import Link from "next/link";
 
 type HadicChapterType = {
@@ -47,6 +48,18 @@ const ChapterPage = () => {
                     data?.metadata?.english?.introduction || ""
                 );
                 setHadics(data?.hadiths || []);
+                const hadithId = searchParams.get("item");
+                if (hadithId) {
+                    setTimeout(() => {
+                        const element = document.getElementById(
+                            `item-${hadithId}`
+                        );
+                        if (element) {
+                            element.scrollIntoView({ behavior: "smooth" });
+                        }
+                    }, 1000);
+                }
+                startBmInterval();
             });
     }, []);
 
@@ -89,10 +102,23 @@ const ChapterPage = () => {
             <hr className="opacity-10 w-40 pl-5" />
 
             {hadiths.map((hadith, index) => (
-                <div key={index} className="p-2 text-justify">
-                    <h4 className=" text-xs1 text-yellow-400">
-                        Chapter {hadith.chapterId}, Hadith {hadith.id}
-                    </h4>
+                <div
+                    key={index}
+                    className="p-2 text-justify"
+                    id={`item-${hadith.id}`}
+                    data-item={"bookmarkable"}
+                >
+                    <div className="flex">
+                        <div
+                            className="cursor-pointer p-1 hover:border border-yellow-500 rounded"
+                            onClick={() => share(hadith.id)}
+                        >
+                            <ShareIcon className="w-3" />
+                        </div>
+                        <h4 className="pl-1 pt-2 text-xs1 text-yellow-400">
+                            Chapter {hadith.chapterId}, Hadith {hadith.id}
+                        </h4>
+                    </div>
                     <div className=" text-xs1 text-gray-400">
                         {hadith.english.narrator}
                     </div>
@@ -104,6 +130,24 @@ const ChapterPage = () => {
             ))}
         </div>
     );
+};
+
+const share = (hadithId: number) => {
+    let url = "";
+    if (window.location.href.includes("item")) {
+        url = window.location.href.replace(/item=\d+/, `item=${hadithId}`);
+    } else {
+        url = `${window.location.href}&item=${hadithId}`;
+    }
+    if (navigator.share) {
+        navigator.share({
+            title: `Hadith ${hadithId}`,
+            url,
+        });
+    } else {
+        navigator.clipboard.writeText(url);
+        window.alert("Link copied to clipboard");
+    }
 };
 
 export default ChapterPage;

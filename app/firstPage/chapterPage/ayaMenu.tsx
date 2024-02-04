@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 
-import LanguageIcon from "../icons/translate.svg";
 import Book1Icon from "../icons/book1.svg";
 import BookIcon from "../icons/book.svg";
-import ShareIcon from "../icons/copy.svg";
+import ShareIcon from "../icons/share.svg";
+import CopyIcon from "../icons/copy.svg";
 import SavedIcon from "../icons/bookmark.svg";
 import PlayIcon from "../icons/play_circle.svg";
 import DateIcon from "../icons/calendar.svg";
@@ -63,6 +63,15 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
                     <div className={toolTipStyle}>Related Bible verses</div>
                     <BookIcon />
                 </div>
+                <div
+                    className={iconStyle}
+                    onClick={() => share(probs.chapterId, probs.ayaId)}
+                >
+                    <div className={toolTipStyle}>
+                        {navigator["share"] ? "Share" : "Copy"}
+                    </div>
+                    {navigator["share"] ? <ShareIcon /> : <CopyIcon />}
+                </div>
                 {featureAyaDate && (
                     <div
                         className={iconStyle}
@@ -76,10 +85,6 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
                 )}
                 {featureBookmark && (
                     <>
-                        <div className={iconStyle}>
-                            <div className={toolTipStyle}>Copy link</div>
-                            <ShareIcon />
-                        </div>
                         <div className={iconStyle}>
                             <div className={toolTipStyle}>Bookmark</div>
                             <SavedIcon />
@@ -111,6 +116,20 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
             )}
         </div>
     );
+};
+
+const share = (chapterId: number, ayaId: number) => {
+    const url = `${window.location.origin}/${window.location.pathname}?id=${chapterId}&item=${ayaId}`;
+    if (navigator.share) {
+        navigator.share({
+            title: `Quran ${chapterId}:${ayaId}`,
+            url,
+        });
+        return;
+    } else {
+        navigator.clipboard.writeText(url);
+        window.alert("Link copied to clipboard");
+    }
 };
 
 const playAya = (chapterId: number, ayaId: number) => {

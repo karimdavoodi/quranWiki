@@ -7,7 +7,7 @@ const Translate = (probs: { chapterId: number; ayaId: number }) => {
 
     return (
         <div>
-            <div className="text-left text-xs1 text-gray-400">
+            <div className="text-left text-xs1 text-gray-500">
                 {probs.chapterId}:{probs.ayaId}
             </div>
             <div className="text-xs3 text-left text-gray-200">

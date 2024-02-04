@@ -6,12 +6,23 @@ import { ArabicText } from "./arabicText";
 import { AyaMenu } from "./ayaMenu";
 import Translate from "./ayaTranslate";
 import Link from "next/link";
+import { startBmInterval } from "@/app/util";
 
 const ChapterPage = () => {
     const [id, setId] = useState("0");
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
         setId(searchParams.get("id") || "0");
+        const ayaId = searchParams.get("item");
+        if (ayaId) {
+            setTimeout(() => {
+                const element = document.getElementById(`item-${ayaId}`);
+                if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                }
+            }, 1000);
+        }
+        startBmInterval();
     }, []);
 
     const chapter = quranArabic.find((chapter) => chapter.id.toString() === id);
@@ -31,8 +42,13 @@ const ChapterPage = () => {
                     : ""}
             </div>
             {chapter?.verses.map((aya, index) => (
-                <div className="p-1" key={index}>
-                    <ArabicText text={aya.text} id={aya.id} />
+                <div
+                    className="p-1"
+                    key={index}
+                    id={`item-${aya.id}`}
+                    data-item={"bookmarkable"}
+                >
+                    <ArabicText text={aya.text} id={aya.id} chapter={id} />
                     <Translate chapterId={chapter?.id} ayaId={aya.id} />
                     <AyaMenu chapterId={chapter.id} ayaId={aya.id} />
                     <hr className="opacity-20" />

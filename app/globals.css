@@ -26,5 +26,11 @@ body {
 
 @font-face {
   font-family: "uthmanV2";
-  src: local("uthmanV2"), url("../fonts/uthmanTN_v2-0.ttf") format(".ttf");
+  src: local("uthmanV2"), url("../fonts/uthmani.otf");
 }
+
+@font-face {
+  font-family: "numberFont";
+  src: local("numberFont"), url("../fonts/numbers.ttf");
+}
+
