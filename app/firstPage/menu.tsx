@@ -12,7 +12,7 @@ export const Menu = () => {
     const [bookmark, setBookmark] = useState("");
 
     const iconStyle = "cursor-pointer inline-flex hover:bg-[#4f5d39]";
-    const toolTipStyle = "pt-1 text-xs1 text-red-500";
+    const toolTipStyle = "pt-1 text-xs1 text-white";
 
     useEffect(() => {
         const bookmark = localStorage.getItem("bookmark");
@@ -22,7 +22,7 @@ export const Menu = () => {
     }, []);
 
     return (
-        <div className="pb-2 flex pl-8">
+        <div className="pb-2 pt-1 pr-1 flex pl-8">
             <Link href="/firstPage/hadithFirstPage" className={iconStyle}>
                 <BookIcon />
                 <div className={toolTipStyle}>Hadith Books</div>

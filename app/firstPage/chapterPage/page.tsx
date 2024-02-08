@@ -10,6 +10,11 @@ import { startBmInterval } from "@/app/util";
 
 const ChapterPage = () => {
     const [id, setId] = useState("0");
+    const [showTranslate, setShowTranslate] = useState(true);
+    const [showArabic, setShowArabic] = useState(true);
+
+    let lastTouchTime = 0;
+
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
         setId(searchParams.get("id") || "0");
@@ -33,10 +38,10 @@ const ChapterPage = () => {
                 <BackIcon />
                 <div className="text-xs2 text-gray-100-400">Back</div>
             </Link>
-            <h1 className="font-['uthmanV2'] text-green-400 text-xs4 pt-5 pb-2">
+            <h1 className="font-['uthmanV2'] text-white text-lx pt-5 pb-2">
                 سورة {chapter?.name}
             </h1>
-            <div className="pb-3 font-['uthmanV2'] text-xs3">
+            <div className="pb-3 font-['uthmanV2'] text-xs4">
                 {chapter?.id !== 1 && chapter?.id !== 9
                     ? "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ"
                     : ""}
@@ -48,10 +53,48 @@ const ChapterPage = () => {
                     id={`item-${aya.id}`}
                     data-item={"bookmarkable"}
                 >
-                    <ArabicText text={aya.text} id={aya.id} chapter={id} />
-                    <Translate chapterId={chapter?.id} ayaId={aya.id} />
-                    <AyaMenu chapterId={chapter.id} ayaId={aya.id} />
-                    <hr className="opacity-20" />
+                    {showArabic && (
+                        <div
+                            onTouchEnd={() => {
+                                const currentTime = new Date().getTime();
+                                if (currentTime - lastTouchTime < 500) {
+                                    setShowTranslate(!showTranslate);
+                                }
+                                lastTouchTime = currentTime;
+                            }}
+                            onDoubleClick={() => {
+                                setShowTranslate(!showTranslate);
+                            }}
+                        >
+                            <ArabicText
+                                text={aya.text}
+                                id={aya.id}
+                                chapter={id}
+                            />
+                        </div>
+                    )}
+                    {showTranslate && (
+                        <>
+                            <div
+                                onTouchEnd={() => {
+                                    const currentTime = new Date().getTime();
+                                    if (currentTime - lastTouchTime < 500) {
+                                        setShowArabic(!showArabic);
+                                    }
+                                    lastTouchTime = currentTime;
+                                }}
+                                onDoubleClick={() => setShowArabic(!showArabic)}
+                            >
+                                <Translate
+                                    chapterId={chapter?.id}
+                                    ayaId={aya.id}
+                                />
+                            </div>
+
+                            <AyaMenu chapterId={chapter.id} ayaId={aya.id} />
+                        </>
+                    )}
+                    <hr className="opacity-30" />
                 </div>
             ))}
         </div>

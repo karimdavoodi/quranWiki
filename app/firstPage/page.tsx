@@ -5,7 +5,7 @@ import { ChaptersList } from "./chaptersLists";
 const FirstPage = () => {
     return (
         <div>
-            <h1 className="font-serif pt-14 pb-3 text-lx text-green-300">
+            <h1 className="font-serif pt-14 pb-3 text-lx text-white">
                 The Holy Quran
             </h1>
             <h2 className="pl-8 pr-8 text-xs1 text-center">
