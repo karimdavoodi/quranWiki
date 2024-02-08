@@ -13,8 +13,6 @@ const ChapterPage = () => {
     const [showTranslate, setShowTranslate] = useState(true);
     const [showArabic, setShowArabic] = useState(true);
 
-    let lastTouchTime = 0;
-
     useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
         setId(searchParams.get("id") || "0");
@@ -55,15 +53,10 @@ const ChapterPage = () => {
                 >
                     {showArabic && (
                         <div
-                            onTouchEnd={() => {
-                                const currentTime = new Date().getTime();
-                                if (currentTime - lastTouchTime < 500) {
+                            onTouchEnd={(e) => {
+                                if (e.touches?.length > 2) {
                                     setShowTranslate(!showTranslate);
                                 }
-                                lastTouchTime = currentTime;
-                            }}
-                            onDoubleClick={() => {
-                                setShowTranslate(!showTranslate);
                             }}
                         >
                             <ArabicText
@@ -76,14 +69,11 @@ const ChapterPage = () => {
                     {showTranslate && (
                         <>
                             <div
-                                onTouchEnd={() => {
-                                    const currentTime = new Date().getTime();
-                                    if (currentTime - lastTouchTime < 500) {
+                                onTouchEnd={(e) => {
+                                    if (e.touches?.length > 2) {
                                         setShowArabic(!showArabic);
                                     }
-                                    lastTouchTime = currentTime;
                                 }}
-                                onDoubleClick={() => setShowArabic(!showArabic)}
                             >
                                 <Translate
                                     chapterId={chapter?.id}
