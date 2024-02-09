@@ -53,7 +53,7 @@ const ChapterPage = () => {
                 >
                     {showArabic && (
                         <div
-                            onTouchEnd={(e) => {
+                            onTouchStart={(e) => {
                                 if (e.touches?.length > 2) {
                                     setShowTranslate(!showTranslate);
                                 }
@@ -69,7 +69,7 @@ const ChapterPage = () => {
                     {showTranslate && (
                         <>
                             <div
-                                onTouchEnd={(e) => {
+                                onTouchStart={(e) => {
                                     if (e.touches?.length > 2) {
                                         setShowArabic(!showArabic);
                                     }
@@ -82,9 +82,9 @@ const ChapterPage = () => {
                             </div>
 
                             <AyaMenu chapterId={chapter.id} ayaId={aya.id} />
+                            <hr className="opacity-20" />
                         </>
                     )}
-                    <hr className="opacity-30" />
                 </div>
             ))}
         </div>

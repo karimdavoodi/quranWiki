@@ -23,8 +23,7 @@ export const startBmInterval = () => {
             const rect = element.getBoundingClientRect();
             const isInView =
                 rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <=
+                rect.top <=
                     (window.innerHeight ||
                         document.documentElement.clientHeight);
             return isInView ? rect.top : -1;
