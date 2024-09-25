@@ -3,7 +3,6 @@ import { connect } from "mongoose";
 import {
     RELATION_ADD_INTERVAL,
     RELATION_LIKE_INTERVAL,
-    dbUrl,
 } from "@/app/constant";
 import crypto from "crypto";
 
@@ -12,7 +11,7 @@ const hashString = (str: string) => {
 };
 async function setRelation(data: IRelation) {
     try {
-        await connect(dbUrl);
+        await connect(process.env.MONGODB_URL ?? "");
         // Check if user does relation less than FEADBACK_INTERVAL ago
         const date = new Date().getTime() - RELATION_ADD_INTERVAL;
         const searchModel = await Relation.find({
@@ -50,7 +49,7 @@ async function setRelation(data: IRelation) {
 
 async function updateRelation(data: IRelation) {
     try {
-        await connect(dbUrl);
+        await connect(process.env.MONGODB_URL ?? "");
         // Check if user does relation less than INTERVAL
         const date = new Date().getTime() - RELATION_LIKE_INTERVAL;
         const searchModel = await Relation.find({
@@ -88,7 +87,7 @@ export async function POST(request: Request) {
     const body: IRelation = await request.json();
     const userHash = hashString(
         request.headers.get("user-agent")! +
-            request.headers.get("x-forwarded-for")!
+        request.headers.get("x-forwarded-for")!
     );
     body.userHash = userHash;
     body.date = new Date().getTime();
@@ -103,7 +102,7 @@ export async function PUT(request: Request) {
     const body: IRelation = await request.json();
     const userHash = hashString(
         request.headers.get("user-agent")! +
-            request.headers.get("x-forwarded-for")!
+        request.headers.get("x-forwarded-for")!
     );
     body.userHash = userHash;
     body.date = new Date().getTime();
@@ -130,7 +129,7 @@ export async function GET(request: Request) {
         ayaId: parseInt(ayaId, 10),
         type: type,
     };
-    await connect(dbUrl);
+    await connect(process.env.MONGODB_URL ?? "");
     const searchModel = await Relation.find(searchData).exec();
     if (searchModel.length === 0) {
         return Response.json({

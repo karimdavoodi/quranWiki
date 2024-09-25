@@ -1,6 +1,6 @@
 import { IFeedback, Feedback } from "../../models";
 import { connect } from "mongoose";
-import { FEEDBACK_INTERVAL, dbUrl } from "@/app/constant";
+import { FEEDBACK_INTERVAL } from "@/app/constant";
 import crypto from "crypto";
 
 const hashString = (str: string) => {
@@ -9,7 +9,7 @@ const hashString = (str: string) => {
 
 async function setFeedback(data: IFeedback) {
     try {
-        await connect(dbUrl);
+        await connect(process.env.MONGODB_URL ?? '');
         // Check if user does feedback less than FEADBACK_INTERVAL ago
         const date = new Date().getTime() - FEEDBACK_INTERVAL;
         const searchModel = await Feedback.find({
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
         date: new Date().getTime(),
         userHash: hashString(
             request.headers.get("user-agent")! +
-                request.headers.get("x-forwarded-for")!
+            request.headers.get("x-forwarded-for")!
         ),
     };
     const result = await setFeedback(data);
