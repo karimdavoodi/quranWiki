@@ -108,18 +108,18 @@ export const AyaMenu = (probs: { chapterId: number; ayaId: number }) => {
             {(subMenu === "quran" ||
                 subMenu === "bible" ||
                 subMenu === "hadith") && (
-                <Relations
-                    chapterId={probs.chapterId}
-                    ayaId={probs.ayaId}
-                    submenu={subMenu}
-                />
-            )}
+                    <Relations
+                        chapterId={probs.chapterId}
+                        ayaId={probs.ayaId}
+                        submenu={subMenu}
+                    />
+                )}
         </div>
     );
 };
 
 const share = (chapterId: number, ayaId: number) => {
-    const url = `${window.location.origin}/${window.location.pathname}?id=${chapterId}&item=${ayaId}`;
+    const url = `${window.location.origin}${window.location.pathname}?id=${chapterId}&item=${ayaId}`;
     if (navigator.share) {
         navigator.share({
             title: `Quran ${chapterId}:${ayaId}`,
