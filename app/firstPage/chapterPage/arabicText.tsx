@@ -3,15 +3,12 @@ import React from "react";
 export const ArabicText = (probs: {
     text: string;
     id: number;
-    chapter: string;
+    chapter: number;
 }) => {
     return (
         <div dir="rtl" key={probs.id}>
-            <div className=" text-xs3 pb-1 text-right text-gray-500 pl-2 font-['numberFont']">
-                {toArabic(probs.chapter)}:{toArabic(probs.id)}
-            </div>
-            <div className="text-xs4 leading-relaxed  text-yellow-400 text-justify font-['uthmanV2']">
-                {probs.text}
+            <div className="text-xs4 leading-relaxed  text-yellow-600 text-justify font-['uthmanV2']">
+                {probs.text} {toArabic(probs.id)}
             </div>
         </div>
     );

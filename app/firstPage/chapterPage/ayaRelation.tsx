@@ -34,10 +34,6 @@ export const Relation = (props: {
             bookNames.push(...hadicBookNames.map((item) => item.title));
             chapterNumbers = 100;
         }
-        if (props.type === "bible") {
-            bookNames.push(...bibleBookNames);
-            chapterNumbers = 150;
-        }
         const chapters = Array.from(
             { length: chapterNumbers },
             (_, index) => index
@@ -90,30 +86,7 @@ export const Relation = (props: {
                     .catch((err) => {
                         console.log("Error on getting data", err);
                     });
-            } else if (type === "bible") {
-                if ((book === "" || chapter === 0) && text !== "") {
-                    setText("");
-                    return;
-                }
-                fetch(`/data/bible/${book}.json`)
-                    .then((resp) => resp.json())
-                    .then((bible) => {
-                        const newText = bible?.find(
-                            (item: {
-                                chapter: number;
-                                verse: number;
-                                text: string;
-                            }) =>
-                                item.chapter === chapter && item.verse === verse
-                        )?.text;
-                        if (newText !== text) {
-                            setLimitedText(newText);
-                        }
-                    })
-                    .catch((err) => {
-                        console.log("Error on getting data", err);
-                    });
-            }
+            } 
         },
         [book, chapter, verse, text]
     );
@@ -180,7 +153,7 @@ export const Relation = (props: {
         <div className={rowStyle}>
             {isNew && (
                 <div className="flex flex-col">
-                    {(props.type === "bible" || props.type === "hadith") && (
+                    {( props.type === "hadith") && (
                         <select
                             className={selectStyle}
                             disabled={props.item.relateToBook !== ""}

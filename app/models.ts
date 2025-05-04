@@ -3,11 +3,10 @@ import { Schema, model, models, Model } from "mongoose";
 export type AyaSubmenuType =
     | "quran"
     | "hadith"
-    | "bible"
     | "translate"
     | "date"
     | "";
-export type RelationType = "quran" | "hadith" | "bible";
+export type RelationType = "quran" | "hadith";
 
 export interface IFeedback {
     name: string;

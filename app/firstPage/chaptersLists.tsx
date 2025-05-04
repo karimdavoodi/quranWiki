@@ -1,13 +1,15 @@
 import React from "react";
 import Link from "next/link";
 
-import { quranArabic } from "@/public/data/quran_ar";
+import { getChapterNames } from "@/public/data/data";
+
+const chapterNames = getChapterNames();
 
 export const ChaptersList = () => {
     return (
         <div>
             <hr />
-            {quranArabic.map((chapter, index) => (
+            {chapterNames.map((chapter, index) => (
                 <div key={index} className="w-56 inline-block">
                     <Link
                         href={{

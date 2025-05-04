@@ -7,11 +7,11 @@ const Translate = (probs: { chapterId: number; ayaId: number }) => {
 
     return (
         <div>
-            <div className="text-left text-xs1 text-gray-500">
-                {probs.chapterId}:{probs.ayaId}
-            </div>
-            <div className="text-xs3 text-left text-gray-200">
-                {quranEn[id]}
+            <div className="text-xs3 text-left text-orange-600 flex flex-row">
+                {quranEn[id]} 
+                
+               <span className="ml-1"></span>
+               <div className="text-xs1 pt-1 text-orange-400">  ({probs.ayaId})</div>
             </div>
         </div>
     );

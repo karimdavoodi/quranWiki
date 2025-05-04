@@ -1,3 +1,15 @@
+export type quranArabicType = {
+    id: number;
+    name: string;
+    nameEn: string;
+    type: string;
+    total_verses: number;
+    verses: {
+        id: number;
+        text: string;
+    }[];
+};
+
 export const quranArabic = [
     {
         id: 1,
