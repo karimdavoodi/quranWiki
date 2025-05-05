@@ -33,7 +33,7 @@ export const startBmInterval = () => {
             '[data-item="bookmarkable"]'
         );
 
-        let elements: Element[] = [];
+        const elements: Element[] = [];
         divElements.forEach((div) => {
             const top = getTopIfisInViewport(div);
             if (top !== -1) {

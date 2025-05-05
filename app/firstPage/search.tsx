@@ -1,20 +1,20 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Ref } from "./types";
 import { getJuzVerses, getPagesVerses } from "@/public/data/data";
 
 export const Search = () => {
-  const [bookmark, setBookmark] = useState("");
+  // const [bookmark, setBookmark] = useState("");
 
-  const iconStyle = "cursor-pointer inline-flex hover:bg-[#4f5d39]";
-  const toolTipStyle = "pr-3 text-xs1 text-white";
+  // const iconStyle = "cursor-pointer inline-flex hover:bg-[#4f5d39]";
+  // const toolTipStyle = "pr-3 text-xs1 text-white";
 
-  useEffect(() => {
-    const bookmark = localStorage.getItem("bookmark");
-    if (bookmark) {
-      setBookmark(bookmark);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const bookmark = localStorage.getItem("bookmark");
+  //   if (bookmark) {
+  //     setBookmark(bookmark);
+  //   }
+  // }, []);
 
   return (
     <div className="inline-flex p-2 text-xs1">
@@ -26,14 +26,13 @@ export const Search = () => {
           if (e.key === "Enter") {
             const value = e.currentTarget.value;
             const ref = parseRef(value);
-            ref && gotoPage(ref);
+            if (ref) gotoPage(ref);
           }
         }}
       />
     </div>
   );
 };
-
 
 export const parseRef = (searchText: string): Ref | undefined => {
   // chapter reg: \d[:\d] \w
@@ -94,6 +93,5 @@ const gotoPage = (ref: Ref) => {
   }
   console.log("Navigating to:", ref);
 };
-
 
 export default Search;

@@ -1,0 +1,35 @@
+name: CI
+# Trigger the workflow on push or pull request to the main branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Specify the job
+jobs:
+  build:
+
+    # The OS and environment for the job
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code from the repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # or whichever Node.js version you're using
+
+      # Step 3: Install dependencies using npm or yarn
+      - name: Install dependencies
+        run: npm install  # or 'yarn install' if you're using Yarn
+
+      # Step 4: Build the Next.js app
+      - name: Build
+        run: npm run build  # or 'yarn build'

@@ -11,12 +11,10 @@ import { getVerses } from "@/public/data/data";
 
 // link page?id=1&item=1&lastId=1&lastItem=1
 
+const BESM_STYLE = "font-['uthmanV2'] text-xs4 text-green-500"; 
+
 const ChapterPage = () => {
   const [showTranslate, setShowTranslate] = useState(-1);
-  const [location, setLocation] = useState<Pages>({
-    start: { chapter: 1, verse: 1 },
-    end: { chapter: 1, verse: 1 },
-  });
 
   const [settings, setSettings] = useState({
     textDisplay: "both", // "arabic", "english", or "both"
@@ -45,7 +43,6 @@ const ChapterPage = () => {
       start: { chapter: parseInt(id), verse: parseInt(ayaId) },
       end: { chapter: parseInt(lastId), verse: parseInt(lastItem) },
     };
-    setLocation(location);
     const verses = getVerses(location);
     setVerses(verses);
     startBmInterval();
@@ -57,9 +54,9 @@ const ChapterPage = () => {
         <BackIcon />
         <div className="text-xs2 text-gray-100-400">Back</div>
       </Link>
-    
+
       {verses[0]?.id > 0 && (
-        <div className="pb-3 font-['uthmanV2'] text-xs4">
+        <div className={`pb-3  ${BESM_STYLE}`}>
           {verses[0]?.chapterId !== 1 && verses[0]?.chapterId !== 9
             ? "بِسۡمِ ٱللَّهِ ٱلرَّحۡمَٰنِ ٱلرَّحِيمِ" + "\n"
             : ""}
@@ -75,10 +72,8 @@ const ChapterPage = () => {
         >
           {aya.id === 0 && (
             <div className="font-['uthmanV2'] text-xs4">
-                {
-                    parseStart(aya.text)
-                }
-                </div>
+              {parseStart(aya.text)}
+            </div>
           )}
 
           {aya.id !== 0 && (
@@ -89,14 +84,13 @@ const ChapterPage = () => {
 
               {settings.textDisplay !== "english" && (
                 <div
-                onClick={ () => {
-                  if(showTranslate === aya.id) {
-                    setShowTranslate(-1);
-                  } else {
-                    setShowTranslate(aya.id); 
-                  }
-                }
-                }
+                  onClick={() => {
+                    if (showTranslate === aya.id) {
+                      setShowTranslate(-1);
+                    } else {
+                      setShowTranslate(aya.id);
+                    }
+                  }}
                 >
                   <ArabicText
                     text={aya.text}
@@ -105,7 +99,8 @@ const ChapterPage = () => {
                   />
                 </div>
               )}
-              {(settings.textDisplay !== "arabic"  || showTranslate === aya.id)&& (
+              {(settings.textDisplay !== "arabic" ||
+                showTranslate === aya.id) && (
                 <>
                   <div>
                     <Translate chapterId={aya.chapterId!} ayaId={aya.id} />
@@ -123,18 +118,14 @@ const ChapterPage = () => {
 };
 
 const parseStart = (text: string) => {
-    const parts = text.split(":");
-    if(parts.length < 2) return text;
-    return (
-      <>
-        <div className="font-['uthmanV2'] text-xs4 p-2">
-        سورة {parts[1]}
-        </div>
-        <div className="font-['uthmanV2'] text-xs4">
-        {parts[0]}
-        </div>
-      </>
-    );
-}
+  const parts = text.split(":");
+  if (parts.length < 2) return text;
+  return (
+    <>
+      <div className={`${BESM_STYLE} p-2`}>سورة {parts[1]}</div>
+      <div className={`${BESM_STYLE}`}>{parts[0]}</div>
+    </>
+  );
+};
 
 export default ChapterPage;

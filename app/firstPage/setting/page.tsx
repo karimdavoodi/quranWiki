@@ -3,12 +3,12 @@ import Link from "next/link";
 import BackIcon from "../icons/back.svg";
 import { useEffect, useState } from "react";
 
-const settingPage = () => {
+const SettingPage = () => {
   const [settings, setSettings] = useState({
     textDisplay: "both", // "arabic", "english", or "both"
     showVerseMenu: true,
   });
-  
+
   // State to track button pressed state
   const [isButtonPressed, setIsButtonPressed] = useState(false);
 
@@ -28,12 +28,12 @@ const settingPage = () => {
   const handleTextDisplayChange = (value: string) => {
     setSettings({
       ...settings,
-      textDisplay: value
+      textDisplay: value,
     });
   };
 
   const handleCheckboxChange = (setting: keyof typeof settings) => {
-    if (setting === 'showVerseMenu') {
+    if (setting === "showVerseMenu") {
       setSettings({
         ...settings,
         [setting]: !settings[setting],
@@ -44,9 +44,9 @@ const settingPage = () => {
   const saveSettings = () => {
     // Visual feedback for click
     setIsButtonPressed(true);
-    
+
     localStorage.setItem("quranSettings", JSON.stringify(settings));
-    
+
     setTimeout(() => {
       setIsButtonPressed(false);
     }, 300);
@@ -73,7 +73,9 @@ const settingPage = () => {
                 checked={settings.textDisplay === "arabic"}
                 onChange={() => handleTextDisplayChange("arabic")}
               />
-              <label htmlFor="arabicOnly" className="pl-1">Arabic text only</label>
+              <label htmlFor="arabicOnly" className="pl-1">
+                Arabic text only
+              </label>
             </div>
             <div>
               <input
@@ -84,7 +86,9 @@ const settingPage = () => {
                 checked={settings.textDisplay === "english"}
                 onChange={() => handleTextDisplayChange("english")}
               />
-              <label htmlFor="englishOnly" className="pl-1">English text only</label>
+              <label htmlFor="englishOnly" className="pl-1">
+                English text only
+              </label>
             </div>
             <div>
               <input
@@ -95,10 +99,12 @@ const settingPage = () => {
                 checked={settings.textDisplay === "both"}
                 onChange={() => handleTextDisplayChange("both")}
               />
-              <label htmlFor="bothTexts" className="pl-1">Show both texts</label>
+              <label htmlFor="bothTexts" className="pl-1">
+                Show both texts
+              </label>
             </div>
           </fieldset>
-          
+
           <div className="mt-2">
             <input
               type="checkbox"
@@ -106,12 +112,14 @@ const settingPage = () => {
               checked={settings.showVerseMenu}
               onChange={() => handleCheckboxChange("showVerseMenu")}
             />
-            <label htmlFor="verseMenu" className="pl-1">Show verse menu</label>
+            <label htmlFor="verseMenu" className="pl-1">
+              Show verse menu
+            </label>
           </div>
-          
+
           <button
             className={`bg-blue-500 text-white rounded p-1 text-xs1 mt-3 transition-all duration-200 hover:bg-blue-600 ${
-              isButtonPressed ? 'opacity-70 transform scale-95' : ''
+              isButtonPressed ? "opacity-70 transform scale-95" : ""
             }`}
             onClick={saveSettings}
             onMouseDown={() => setIsButtonPressed(true)}
@@ -125,4 +133,4 @@ const settingPage = () => {
     </>
   );
 };
-export default settingPage;
+export default SettingPage;

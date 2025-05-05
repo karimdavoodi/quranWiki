@@ -4,10 +4,8 @@ import Link from "next/link";
 
 import BookIcon from "./icons/book.svg";
 import SaveIcon from "./icons/bookmark.svg";
-import InfoIcon from "./icons/info.svg";
 import SettingIcon from "./icons/setting.svg";
 import { featureBookmark } from "../constant";
-import { log } from "console";
 
 export const Menu = () => {
   const [bookmark, setBookmark] = useState("");
