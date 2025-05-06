@@ -15,7 +15,19 @@ export const ArabicText = (probs: {
 };
 
 const toArabic = (id: number | string) => {
-  const mapDigit = ["۰", "١", "٢", "٣", "٤", "۵", "٦", "٧", "٨", "٩", " ", " "];
+  const mapDigit = [];
+  mapDigit[0] = "٠";
+  mapDigit[1] = "١";
+  mapDigit[2] = "٢";
+  mapDigit[3] = "٣";
+  mapDigit[4] = "٤";
+  mapDigit[5] = "٥";
+  mapDigit[6] = "٦";
+  mapDigit[7] = "٧";
+  mapDigit[8] = "٨";
+  mapDigit[9] = "٩";
+  mapDigit[10] = " ";
+  mapDigit[11] = " ";
   let arabic = "";
   const latin = Number(id)
     .toString()
