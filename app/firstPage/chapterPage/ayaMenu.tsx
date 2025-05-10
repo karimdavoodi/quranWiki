@@ -20,7 +20,7 @@ const AyaMenu = (props: { chapterId: number; ayaId: number }) => {
   const iconStyle = "cursor-pointer p-1 hover:border border-yellow-500 rounded";
   const iconStyleSelected = "border border-yellow-500 rounded";
   const toolTipStyle =
-    "absolute pt-5 pl-0 text-xs1 opacity-0 text-yellow-500 hover:opacity-100";
+    "absolute pt-5 pl-0 text-xs1 opacity-0 text-menu2 hover:opacity-100";
 
   const handleSubMenuClick = (menu: AyaSubmenuType) => {
     setSubmenu(subMenu !== menu ? menu : "");
@@ -63,7 +63,7 @@ const AyaMenu = (props: { chapterId: number; ayaId: number }) => {
   return (
     <div>
       <div className="flex pt-1 pl-1 pr-1">
-        <div className="text-left pt-1 text-xs2 text-gray-400">
+        <div className="text-left pt-1 text-xs3 text-menu2">
           {props.chapterId}:{props.ayaId}
         </div>
 

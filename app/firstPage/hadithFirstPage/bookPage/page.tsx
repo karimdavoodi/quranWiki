@@ -26,15 +26,15 @@ const BookPage = () => {
     <div className="p-1 font-serif">
       <Link href="/firstPage/hadithFirstPage" className="flex w-12 p-1">
         <BackIcon />
-        <div className="text-xs2 text-gray-100-400">Back</div>
+        <div className="text-xs2 text-menu">Back</div>
       </Link>
 
-      <h1 className="pt-8 text-green-300 ">{bookName}</h1>
-      <h2 className=" pb-3 text-yellow-600 text-xs2">{bookAuthor}</h2>
+      <h1 className="pt-8 text-menu ">{bookName}</h1>
+      <h2 className=" pb-3 text-menu2 text-xs2">{bookAuthor}</h2>
       <hr className="opacity-10 pl-5" />
 
       {chapters.map((id, index) => (
-        <div key={index} className="w-32 inline-block hover:bg-[#4f5d39]">
+        <div key={index} className="w-32 inline-block hover:bg-bgHover">
           <Link
             href={{
               pathname: "/firstPage/hadithFirstPage/bookPage/chapterPage",
@@ -47,7 +47,7 @@ const BookPage = () => {
               },
             }}
           >
-            <h2 className="pl-2 text-yellow-300 text-xs3" key={index}>
+            <h2 className="pl-2 text-en text-xs3" key={index}>
               Chapter {id}
             </h2>
           </Link>

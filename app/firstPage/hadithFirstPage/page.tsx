@@ -8,10 +8,10 @@ const FirstPage = () => {
     <div>
       <Link href="/firstPage" className="flex w-12 p-1">
         <BackIcon />
-        <div className="text-xs2 text-gray-100-400">Back</div>
+        <div className="text-xs2 text-menu">Back</div>
       </Link>
 
-      <h1 className="p-5 font-serif text-green-300">Hadith Books</h1>
+      <h1 className="p-5 font-serif text-menu">Hadith Books</h1>
       <ChaptersList />
     </div>
   );

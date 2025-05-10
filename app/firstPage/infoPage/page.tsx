@@ -8,11 +8,11 @@ const infoPage = () => {
     <>
       <Link href="/firstPage" className="flex w-12 p-1">
         <BackIcon />
-        <div className="text-xs2 text-gray-100-400">Back</div>
+        <div className="text-xs2 text-menu">Back</div>
       </Link>
-      <div className="text-xs2 text-left p-3 text-white">
+      <div className="text-xs2 text-left p-3 text-menu">
         <div className="pt-3">
-          <h1 className="text-green-300">QuranWiki.org is a Sadaqah Jariyah</h1>
+          <h1 className="text-menu">QuranWiki.org is a Sadaqah Jariyah</h1>
           We think by finding the relation between each Quran verse and Hadith
           and Bible, we can understand it better. If you agree, Please help us
           by making the connection between texts, By icons below each verse.
@@ -30,7 +30,7 @@ const infoPage = () => {
             </li>
             <li>- Audio source: https://everyayah.com/</li>
           </ul>
-          <div className="text-green-500">Please send us your feedback:</div>
+          <div className="text-menu2">Please send us your feedback:</div>
         </div>
         <Feedback />
       </div>

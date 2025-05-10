@@ -10,8 +10,8 @@ import { featureBookmark } from "../constant";
 export const Menu = () => {
   const [bookmark, setBookmark] = useState("");
 
-  const iconStyle = "cursor-pointer inline-flex hover:bg-[#4f5d39]";
-  const toolTipStyle = "pr-3 text-xs1 text-white";
+  const iconStyle = "cursor-pointer inline-flex hover:bg-bgHover";
+  const toolTipStyle = "pr-3 text-xs1 text-menu";
 
   useEffect(() => {
     const bookmark = localStorage.getItem("bookmark");

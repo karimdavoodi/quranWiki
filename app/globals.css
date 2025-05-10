@@ -2,24 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground: rgb(202, 202, 201);
-  --background: #3b423c;
-  --background-hover: #363d2a;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #3b423c;
-  }
-}
 html {
   font-size: 24px; 
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--text-color);
+  background: var(--bg-color);
   text-align: center;
   margin: auto;
 }

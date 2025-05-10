@@ -1,4 +1,4 @@
-import { Schema, model, models, Model } from "mongoose";
+    import { Schema, model, models, Model } from "mongoose";
 
 export type AyaSubmenuType =
     | "quran"

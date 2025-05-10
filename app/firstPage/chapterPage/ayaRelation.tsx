@@ -141,7 +141,7 @@ export const Relation = (props: {
 
   const rowStyle = `text-xs2 flex flex-row items-center bg-gray-700 border border-gray-800`;
   const selectStyle = "bg-transparent border border-gray-600";
-  const likeStyle = "text-yellow-400 text-xs1 text-center";
+  const likeStyle = "text-menu text-xs1 text-center";
   const iconStyle = "cursor-pointer hover:border rounded border-yellow-400";
 
   const showAllText = showCompleteText || text.length < MAX_TEXT_LENGTH;
@@ -198,17 +198,17 @@ export const Relation = (props: {
       )}
       <div className="inline-block w-full pl-1">
         {!isNew && (
-          <div className="text-left text-gray-400">
+          <div className="text-left text-menu">
             {book} {chapter}:{verse}
           </div>
         )}
-        <div className="text-justify text-gray-200">
+        <div className="text-justify text-menu">
           {showAllText
             ? text
             : text.substring(0, MAX_TEXT_LENGTH - 20) + "... "}
           {!showAllText ? (
             <div
-              className="text-xs2 inline-block text-yellow-600 cursor-pointer"
+              className="text-xs2 inline-block text-menu cursor-pointer"
               onClick={() => {
                 setShowCompleteText(true);
               }}

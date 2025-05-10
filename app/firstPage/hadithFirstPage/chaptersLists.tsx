@@ -20,8 +20,8 @@ export const ChaptersList = () => {
               },
             }}
           >
-            <div className="p-1 flex hover:bg-[#4f5d39]">
-              <h2 className="text-yellow-300 font-serif text-xs3">
+            <div className="p-1 flex hover:bg-bgHover">
+              <h2 className="text-en font-serif text-xs3">
                 {book.title}
               </h2>
             </div>

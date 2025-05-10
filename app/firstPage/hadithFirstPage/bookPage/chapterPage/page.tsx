@@ -74,22 +74,22 @@ const ChapterPage = () => {
         className="flex w-12 p-1"
       >
         <BackIcon />
-        <div className="text-xs2 text-gray-100-400">Back</div>
+        <div className="text-xs2 text-menu">Back</div>
       </Link>
 
-      <div className="pt-7 p-3 text-left font-bold text-gray-300">
+      <div className="pt-7 p-3 text-left font-bold text-menu2">
         <h1 className="flex text-xs3">
           <div>Hadith Book: </div>
-          <h2 className="text-yellow-400 pl-1">{bookName}</h2>
+          <h2 className="text-menu pl-1">{bookName}</h2>
         </h1>
         <div className="text-xs1">
           <div className="flex">
             <div>Author: </div>
-            <h3 className="text-yellow-500 pl-1">{bookAuthor}</h3>
+            <h3 className="text-menu pl-1">{bookAuthor}</h3>
           </div>
           <div className="flex">
             <div>Topic: </div>
-            <h3 className="text-yellow-500 pl-1">{bookIntroduction}</h3>
+            <h3 className="text-menu pl-1">{bookIntroduction}</h3>
           </div>
         </div>
       </div>
@@ -109,14 +109,14 @@ const ChapterPage = () => {
             >
               <ShareIcon className="w-3" />
             </div>
-            <h4 className="pl-1 pt-2 text-xs1 text-yellow-400">
+            <h4 className="pl-1 pt-2 text-xs1 text-menu">
               Chapter {hadith.chapterId}, Hadith {hadith.id}
             </h4>
           </div>
-          <div className=" text-xs1 text-gray-400">
+          <div className=" text-xs1 text-en">
             {hadith.english.narrator}
           </div>
-          <div className=" text-xs2 text-gray-200">
+          <div className=" text-xs2 text-ar">
             {clearTextFormat(hadith.english.text)}
           </div>
           <hr className="opacity-30  pl-5" />

@@ -7,7 +7,7 @@ export const ArabicText = (probs: {
 }) => {
   return (
     <div dir="rtl" key={probs.id}>
-      <div className="text-xs4 leading-relaxed  text-yellow-500 text-justify font-['uthmanV2']">
+      <div className="text-xs4 leading-relaxed  text-ar text-justify font-['uthmanV2']">
         {probs.text} {toArabic(probs.id)}
       </div>
     </div>

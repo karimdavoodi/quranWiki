@@ -5,13 +5,13 @@ import { ArabicText } from "./arabicText";
 import AyaMenu from "./ayaMenu";
 import Translate from "./ayaTranslate";
 import Link from "next/link";
-import { startBmInterval } from "@/app/util";
+import { applyTheme, startBmInterval } from "@/app/util";
 import { Verse, Pages } from "../types";
 import { getVerses } from "@/public/data/data";
 
 // link page?id=1&item=1&lastId=1&lastItem=1
 
-const BESM_STYLE = "font-['uthmanV2'] text-xs4 text-green-500"; 
+const BESM_STYLE = "font-['uthmanV2'] text-xs4 text-menu"; 
 
 const ChapterPage = () => {
   const [showTranslate, setShowTranslate] = useState(-1);
@@ -23,6 +23,7 @@ const ChapterPage = () => {
 
   const [verses, setVerses] = useState<Verse[]>([]);
   useEffect(() => {
+    applyTheme();
     const savedSettings = localStorage.getItem("quranSettings");
     if (savedSettings) {
       const parsedSettings = JSON.parse(savedSettings);
@@ -52,7 +53,7 @@ const ChapterPage = () => {
     <div className="p-1">
       <Link href="/firstPage" className="flex w-12 p-1">
         <BackIcon />
-        <div className="text-xs2 text-gray-100-400">Back</div>
+        <div className="text-xs2 text-menu">Back</div>
       </Link>
 
       {verses[0]?.id > 0 && (

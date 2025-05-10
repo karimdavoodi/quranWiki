@@ -4,24 +4,13 @@ import { Ref } from "./types";
 import { getJuzVerses, getPagesVerses } from "@/public/data/data";
 
 export const Search = () => {
-  // const [bookmark, setBookmark] = useState("");
-
-  // const iconStyle = "cursor-pointer inline-flex hover:bg-[#4f5d39]";
-  // const toolTipStyle = "pr-3 text-xs1 text-white";
-
-  // useEffect(() => {
-  //   const bookmark = localStorage.getItem("bookmark");
-  //   if (bookmark) {
-  //     setBookmark(bookmark);
-  //   }
-  // }, []);
 
   return (
     <div className="inline-flex p-2 text-xs1">
       <input
         type="text"
         placeholder="ex: 2:8, p2, p1:1, j1, hajj"
-        className="border border-gray-300 bg-gray-500 rounded p-1"
+        className="border border-gray-300 bg-bgHover text-menu rounded p-1"
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             const value = e.currentTarget.value;
@@ -70,7 +59,6 @@ export const parseRef = (searchText: string): Ref | undefined => {
 const gotoPage = (ref: Ref) => {
   const start = parseInt(ref.start);
   const end = ref.end ? parseInt(ref.end) : start;
-
   switch (ref.type) {
     case "chapter":
       window.location.href = `firstPage/chapterPage?id=${ref.start}&item=${ref.end}`;
