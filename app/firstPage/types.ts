@@ -2,8 +2,8 @@ export type RefType = "chapter" | "jozz" | "page";
 
 export type Ref = {
   type: RefType;
-  start: string;
-  end?: string;
+  start: number;
+  end?: number;
   value?: string;
 };
 

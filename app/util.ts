@@ -1,4 +1,7 @@
 "use client";
+import { getChapterNames } from "../public/data/data";
+import { Ref } from "./firstPage/types";
+
 export const quranChapterVerseToStr = (
   chapter: number | string,
   verse: number | string
@@ -132,5 +135,73 @@ export const applyTheme = () => {
     "--text-ar-color",
     colors.textArColor
   );
-  console.info("Theme applied:", colors);
+  console.debug("Theme applied:", colors);
 };
+
+export const parseSearchInput = (searchText: string): Ref | undefined => {
+  // chapter reg: \d[:\d] \w
+  // Jozz    reg: j[\d]
+  // page    reg: p\d[:\d]
+  // chapter name reg: \w
+  const chapterRegex = /^(?:(\d+)(?::(\d+))?)/;
+  const jozzRegex = /^j(\d+)/i;
+  const pageRegex = /^p(\d+)(?::p?(\d+))?/i;
+  if (pageRegex.test(searchText)) {
+    const match = searchText.match(pageRegex);
+    const start = parseInt(match?.[1] || "1");
+    const end = match?.[2] ? parseInt(match[2]) : start;
+    if ((end && end < start) || start < 1 || start > 604) {
+      console.error("Wrong page range");
+      return undefined;
+    }
+    return {
+      type: "page",
+      start,
+      end,
+      value: searchText,
+    };
+  } else if (jozzRegex.test(searchText)) {
+    const start = parseInt(searchText.match(jozzRegex)?.[1] || "0");
+    if (start < 1 || start > 30) {
+      console.error("Wrong juzz range");
+      return undefined;
+    }
+    return {
+      type: "jozz",
+      start,
+      value: searchText,
+    };
+  } else if (chapterRegex.test(searchText)) {
+    const start = parseInt(searchText.match(chapterRegex)?.[1] || "1");
+    const end = parseInt(searchText.match(chapterRegex)?.[2] || "1");
+    if (start < 1 || start > 114) {
+      console.error("Wrong chapter range");
+      return undefined;
+    }
+    return {
+      type: "chapter",
+      start,
+      end, 
+      value: searchText,
+    };
+  } else /*if (chapterNameRegex.test(searchText)) */ {
+    const chaptersName = getChapterNames();
+    const chapter = chaptersName.find((chapter) => {
+      const nameAr = chapter.name;
+      const nameEn = chapter.nameEn.toLowerCase().replace(/'/g, "");
+      return nameAr.includes(searchText) || nameEn.includes(searchText.toLowerCase());
+    });
+    if (!chapter) {
+      console.error("Chapter not found");
+      return undefined;
+    }
+    return {
+      type: "chapter",
+      start: chapter.id,
+      end: 1,
+      value: searchText,
+    };
+     
+  }
+};
+

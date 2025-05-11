@@ -1,3 +1,4 @@
+import { parseSearchInput } from '../app/util';
 import {quran , getPageVerses, getJuzVerses, getChapterName, getPagesVerses, getChapterVerses, getVerses, getChapterNames} from '../public/data/data';
 
 describe('getPageVerses', () => {
@@ -121,22 +122,6 @@ describe('getChapterName', () => {
         expect(getChapterName(110)).toBe("النصر");
         expect(getChapterName(111)).toBe("المسد");
     });
-
-    // it('should return the correct chapter name in English', () => {
-    //     const chapterVerses: { [key: number]: { ar: string; en: string, verses: { [key: string]: string } } } = {};
-    //     quranArabic.forEach((chapter) => {
-    //         const verses: { [key: string]: string } = {};
-    //         chapter.verses.forEach((verse) => {
-    //             const id = `${verse.id}`;
-    //             const text = verse.text;
-    //             verses[id] = text;
-    //         });
-    //         chapterVerses[chapter.id] = {ar: chapter.name, en: chapter.nameEn, verses};
-
-    //     });
-
-    //     console.log(chapterVerses);
-    // });
 });
 
 describe('getPagesVerses', () => {
@@ -305,5 +290,78 @@ describe('getChapterNames', () => {
         expect(chapterNames[0].nameEn).toBe("Al-Fatihah");
         expect(chapterNames[1].nameEn).toBe("Al-Baqarah");
         expect(chapterNames[113].nameEn).toBe("An-Nas");
+    });
+});
+
+describe('parseSearchInput', () => {
+    it('should parse page input correctly', () => {
+        expect(parseSearchInput("p1")).toMatchObject({
+            type: "page",
+            start: 1,
+            end: undefined,
+            value: "p1",
+        });
+        expect(parseSearchInput("p400:412")).toMatchObject({
+            type: "page",
+            start: 400,
+            end: 412,
+            value: "p400:412",
+        });
+        expect(parseSearchInput("p1000:2")).toBeUndefined();
+        expect(parseSearchInput("p100:20")).toBeUndefined();
+    });
+
+    it('should parse chapter input correctly', () => {
+        const result = parseSearchInput("2:8");
+        expect(result).toMatchObject({
+            type: "chapter",
+            start: 2,
+            end: 8,
+            value: "2:8",
+        });
+        expect(parseSearchInput("150:20")).toBeUndefined();
+        expect(parseSearchInput("0:20")).toBeUndefined();
+    });
+
+    it('should parse juzz input correctly', () => {
+        const result = parseSearchInput("j1");
+        expect(result).toMatchObject({
+            type: "jozz",
+            start: 1,
+            value: "j1",
+        });
+        expect(parseSearchInput("j31")).toBeUndefined();
+        expect(parseSearchInput("j-1")).toBeUndefined();
+    });
+
+    it('should parse chapter name input correctly', () => {
+        expect(parseSearchInput("Nisa")).toMatchObject({
+            type: "chapter",
+            start: 4,
+            end: 1,
+            value: "Nisa",
+        });
+        expect(parseSearchInput("Nas")).toMatchObject({
+            type: "chapter",
+            start: 110, // Nasr
+            end: 1,
+            value: "Nas",
+        });
+        expect(parseSearchInput("الفاتحة")).toMatchObject({
+            type: "chapter",
+            start: 1,
+            end: 1,
+            value: "الفاتحة",
+        });
+        expect(parseSearchInput("يونس")).toMatchObject({
+            type: "chapter",
+            start: 10,
+            end: 1,
+            value: "يونس",
+        });
+    });
+    it('should parse invalid input correctly', () => {
+        const result = parseSearchInput("invalid");
+        expect(result).toBeUndefined();
     });
 });
