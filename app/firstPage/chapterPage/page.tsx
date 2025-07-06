@@ -33,7 +33,6 @@ const ChapterPage = () => {
         ...prevSettings,
         ...parsedSettings,
       }));
-      console.log('Settings', settings);
     }
   }, []);
 

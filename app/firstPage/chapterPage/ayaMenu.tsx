@@ -123,7 +123,7 @@ const AyaMenu = (props: { chapterId: number; ayaId: number }) => {
         </div>
       </div>
       {subMenu === "translate" && (
-        <Translate chapterId={props.chapterId} ayaId={props.ayaId} />
+        <Translate chapterId={props.chapterId} ayaId={props.ayaId} textSize="medium" />
       )}
       {(subMenu === "quran" || subMenu === "hadith") && (
         <Relations

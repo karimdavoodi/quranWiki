@@ -3,7 +3,7 @@ import Link from "next/link";
 import BackIcon from "../icons/back.svg";
 import { useEffect, useState } from "react";
 import { applyTheme } from "@/app/util";
-import { Settings } from "../types";
+import { Settings, SettingTextDisplay, SettingTextSize, SettingTheme } from "../types";
 
 
 const SettingPage = () => {
@@ -27,20 +27,20 @@ const SettingPage = () => {
     }
   }, []);
 
-  const handleTextDisplayChange = (value: string) => {
+  const handleTextDisplayChange = (value: SettingTextDisplay) => {
     setDisplaySettings({
       ...displaySettings,
       textDisplay: value,
     });
   };
-  const handleThemeChange = (value: string) => {
+  const handleThemeChange = (value: SettingTheme) => {
     setDisplaySettings({
       ...displaySettings,
       theme: value,
     });
   };
 
-  const handleTextSizeChange = (value: string) => {
+  const handleTextSizeChange = (value: SettingTextSize) => {
     setDisplaySettings({
       ...displaySettings,
       textSize: value,

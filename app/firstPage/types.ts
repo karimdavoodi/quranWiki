@@ -38,9 +38,12 @@ export type ChapterNameType = {
   nameEn: string;
 };
 
+export type SettingTextDisplay = "arabic" | "english" | "both";
+export type SettingTextSize = "small" | "medium" | "large";
+export type SettingTheme = "green-yellow" | "gray-yellow" | "blue-green" | "white-black" | "gray-white";
 export type Settings = {
-  textDisplay: "arabic" | "english" | "both";
-  textSize: "small" | "medium" | "large";
+  textDisplay: SettingTextDisplay;
+  textSize: SettingTextSize;
   showVerseMenu: boolean;
-  theme: "green-yellow" | "gray-yellow" | "blue-green" | "white-black" | "gray-white";
+  theme: SettingTheme;
 };  
