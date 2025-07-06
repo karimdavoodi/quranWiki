@@ -3,11 +3,14 @@ import Link from "next/link";
 import BackIcon from "../icons/back.svg";
 import { useEffect, useState } from "react";
 import { applyTheme } from "@/app/util";
+import { Settings } from "../types";
+
 
 const SettingPage = () => {
   const [isButtonPressed, setIsButtonPressed] = useState(false);
-  const [displaySettings, setDisplaySettings] = useState({
+  const [displaySettings, setDisplaySettings] = useState<Settings>({
     textDisplay: "both", // "arabic", "english", or "both"
+    textSize: "medium", // "small", "medium", or "large"
     showVerseMenu: true,
     theme: "green-yellow",
   });
@@ -34,6 +37,13 @@ const SettingPage = () => {
     setDisplaySettings({
       ...displaySettings,
       theme: value,
+    });
+  };
+
+  const handleTextSizeChange = (value: string) => {
+    setDisplaySettings({
+      ...displaySettings,
+      textSize: value,
     });
   };
 
@@ -173,6 +183,48 @@ const SettingPage = () => {
               />
               <label htmlFor="bothTexts" className="pl-1">
                 Show both texts
+              </label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend className="text-xs2 pt-2">Text Size Options:</legend>
+            <div>
+              <input
+                type="radio"
+                id="smallSize"
+                name="textSize"
+                value="small"
+                checked={displaySettings.textSize === "small"}
+                onChange={() => handleTextSizeChange("small")}
+              />
+              <label htmlFor="smallSize" className="pl-1">
+                Small text
+              </label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="mediumSize"
+                name="textSize"
+                value="medium"
+                checked={displaySettings.textSize === "medium"}
+                onChange={() => handleTextSizeChange("medium")}
+              />
+              <label htmlFor="mediumSize" className="pl-1">
+                Medium text
+              </label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="largeSize"
+                name="textSize"
+                value="large"
+                checked={displaySettings.textSize === "large"}
+                onChange={() => handleTextSizeChange("large")}
+              />
+              <label htmlFor="largeSize" className="pl-1">
+                Large text
               </label>
             </div>
           </fieldset>

@@ -6,7 +6,7 @@ import AyaMenu from "./ayaMenu";
 import Translate from "./ayaTranslate";
 import Link from "next/link";
 import { applyTheme, startBmInterval } from "@/app/util";
-import { Verse, Pages } from "../types";
+import { Verse, Pages, Settings } from "../types";
 import { getVerses } from "@/public/data/data";
 
 // link page?id=1&item=1&lastId=1&lastItem=1
@@ -16,9 +16,11 @@ const BESM_STYLE = "font-['uthmanV2'] text-xs4 text-menu";
 const ChapterPage = () => {
   const [showTranslate, setShowTranslate] = useState(-1);
 
-  const [settings, setSettings] = useState({
-    textDisplay: "both", // "arabic", "english", or "both"
+  const [settings, setSettings] = useState<Settings>({
+    textDisplay: "both",
     showVerseMenu: true,
+    textSize: "medium",
+    theme: "green-yellow",
   });
 
   const [verses, setVerses] = useState<Verse[]>([]);
@@ -31,6 +33,7 @@ const ChapterPage = () => {
         ...prevSettings,
         ...parsedSettings,
       }));
+      console.log('Settings', settings);
     }
   }, []);
 
@@ -97,6 +100,7 @@ const ChapterPage = () => {
                     text={aya.text}
                     id={aya.id}
                     chapter={aya.chapterId!}
+                    textSize={settings.textSize}
                   />
                 </div>
               )}
@@ -104,7 +108,7 @@ const ChapterPage = () => {
                 showTranslate === aya.id) && (
                 <>
                   <div>
-                    <Translate chapterId={aya.chapterId!} ayaId={aya.id} />
+                    <Translate chapterId={aya.chapterId!} ayaId={aya.id} textSize={settings.textSize} />
                   </div>
 
                   <hr className="opacity-20" />

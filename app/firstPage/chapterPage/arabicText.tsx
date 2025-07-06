@@ -4,10 +4,15 @@ export const ArabicText = (probs: {
   text: string;
   id: number;
   chapter: number;
+  textSize: "small" | "medium" | "large";
 }) => {
+  let textSizeClass = "text-xs4";
+  if (probs.textSize === "small") textSizeClass = "text-xs3";
+  if (probs.textSize === "large") textSizeClass = "text-xs5";
+
   return (
     <div dir="rtl" key={probs.id}>
-      <div className="text-xs4 leading-relaxed  text-ar text-justify font-['uthmanV2']">
+      <div className={`${textSizeClass} leading-relaxed  text-ar text-justify font-['uthmanV2']`}>
         {probs.text} {toArabic(probs.id)}
       </div>
     </div>

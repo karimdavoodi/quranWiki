@@ -78,6 +78,7 @@ export const applyTheme = () => {
       switch (config.theme) {
         case "green-yellow":
           colors.bgColor = "rgb(0, 50, 0)"; // dark green
+          colors.textEnColor = "rgb(255, 160, 0)"; // yellow
           break;
         case "gray-yellow":
           colors.bgColor = "rgb(60, 60, 60)"; // gray
